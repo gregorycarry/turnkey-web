@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs TurnKey — charte officielle */
+  --color-anthracite: #414347;
+  --color-orange: #F5762A;
+  --color-gold: #B29923;
+  --color-cream: #FAF7F2;
+  --color-white: #FFFFFF;
+
+  /* Typographie */
+  --font-sans: "Montserrat", system-ui, sans-serif;
+}
+
+/* Import Montserrat depuis Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+/* Reset léger */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-anthracite);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}

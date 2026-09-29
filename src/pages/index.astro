@@ -1,33 +1,193 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const categories = [
+  { icon: "🍽️", label: "F&B", sub: "Café · Restaurant · Bar · Hôtel" },
+  { icon: "🛍️", label: "Commerces", sub: "Salon · Boutique · Bureau" },
+  { icon: "✨", label: "Atypique", sub: "Espace singulier" }
+];
+
+const mandats = [
+  {
+    code: "TK-2026-001",
+    type: "Restaurant / Café",
+    zone: "Axe Estrela / Lapa",
+    prix: "100–150 k€",
+    ca: "250–290 k€",
+    motif: "Réorientation professionnelle",
+    forces: ["Licences complètes", "Terrasse calme", "Quartier en plein dynamisme", "Potentiel de développement"]
+  }
+];
 ---
 
 <BaseLayout title="TurnKey — Transmissão de comércios em Lisboa">
-  <!-- Hero -->
+
+  <!-- HERO -->
   <section class="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center bg-[var(--color-cream)] px-6 text-center py-20">
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center max-w-4xl">
       <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-0">
         IAD Portugal — AMI 11220
       </p>
-
-      <img
-        src="/logo.svg"
-        alt="TurnKey"
-        class="w-full max-w-md md:max-w-lg h-auto -mt-40"
-      />
-
-      <p class="text-xl md:text-2xl text-[var(--color-anthracite)] max-w-2xl">
+      <img src="/logo.svg" alt="TurnKey" class="w-full max-w-md md:max-w-lg h-auto -mt-40" />
+      <h1 class="text-2xl md:text-4xl font-bold text-[var(--color-anthracite)] max-w-3xl leading-tight">
+        Restaurateur et broker à Lisbonne. Je vends et j'accompagne les repreneurs de commerces.
+      </h1>
+      <p class="text-lg text-[var(--color-anthracite)]/70 mt-6 max-w-2xl">
         Where businesses change hands, not value.
       </p>
-
       <div class="mt-12 flex flex-col sm:flex-row gap-4">
-        <a href="#properties" class="bg-[var(--color-orange)] text-white px-8 py-3 rounded-md font-semibold hover:opacity-90 transition">
-          Voir les mandats
+        <a href="#seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
+          Je veux vendre mon commerce
         </a>
-        <a href="#contact" class="border-2 border-[var(--color-anthracite)] text-[var(--color-anthracite)] px-8 py-3 rounded-md font-semibold hover:bg-[var(--color-anthracite)] hover:text-white transition">
-          Prendre contact
+        <a href="#buyer" class="border-2 border-[var(--color-anthracite)] text-[var(--color-anthracite)] px-8 py-4 rounded-md font-semibold hover:bg-[var(--color-anthracite)] hover:text-white transition">
+          Je cherche à reprendre
         </a>
       </div>
     </div>
   </section>
+
+  <!-- DOUBLE PARCOURS -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">Deux missions, une expertise</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">Vendre ou reprendre, je vous accompagne</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div id="seller" class="bg-[var(--color-cream)] p-10 rounded-lg border-t-4 border-[var(--color-orange)]">
+          <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-4">Vous vendez votre commerce</h3>
+          <p class="text-[var(--color-anthracite)]/80 mb-6 leading-relaxed">
+            Restaurant, café, salon, boutique — je valorise votre fonds, je le protège par la confidentialité, et je le présente aux repreneurs qualifiés de ma base.
+          </p>
+          <ul class="space-y-3 mb-8 text-[var(--color-anthracite)]/80">
+            <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> Valorisation gratuite et confidentielle</li>
+            <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> Teasers aveugles, jamais votre enseigne exposée</li>
+            <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> Objectif : 45 jours entre mandat et signature</li>
+            <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> Accompagnement notaire et bail commercial</li>
+          </ul>
+          <a href="#contact-seller" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+            Estimer mon commerce
+          </a>
+        </div>
+        <div id="buyer" class="bg-[var(--color-cream)] p-10 rounded-lg border-t-4 border-[var(--color-anthracite)]">
+          <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-4">Vous cherchez à reprendre</h3>
+          <p class="text-[var(--color-anthracite)]/80 mb-6 leading-relaxed">
+            Vous voulez racheter un fonds de commerce à Lisbonne ? Je vous fais gagner des mois : dossiers vérifiés, cédants sérieux, négociation encadrée.
+          </p>
+          <ul class="space-y-3 mb-8 text-[var(--color-anthracite)]/80">
+            <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> Accès prioritaire aux mandats en cours</li>
+            <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> Analyse des chiffres et due diligence</li>
+            <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> Vision opérateur — je fais tourner un café moi-même</li>
+            <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> Négociation prix et conditions</li>
+          </ul>
+          <a href="#contact-buyer" class="inline-block bg-[var(--color-anthracite)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+            Rejoindre la base repreneurs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANDATS EN COURS -->
+  <section id="properties" class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">Portfolio</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">Mandats en cours</h2>
+        <p class="text-lg text-[var(--color-anthracite)]/70 mt-4 max-w-2xl mx-auto">
+          Nos dossiers sont présentés en aveugle. Détails complets après signature d'un NDA.
+        </p>
+      </div>
+
+      <!-- Grille catégories -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {categories.map((cat) => (
+          <button class="flex flex-col items-center gap-3 p-8 bg-white rounded-lg border border-gray-100 hover:border-[var(--color-orange)] hover:shadow-md transition">
+            <span class="text-5xl">{cat.icon}</span>
+            <span class="text-lg font-bold text-[var(--color-anthracite)]">{cat.label}</span>
+            <span class="text-xs text-[var(--color-anthracite)]/60 text-center">{cat.sub}</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Cartes mandats -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {mandats.map((m) => (
+          <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition">
+            <div class="h-48 bg-gradient-to-br from-[var(--color-anthracite)] to-[var(--color-orange)]/60 flex items-center justify-center">
+              <span class="text-white text-6xl opacity-30">🏪</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
+                <span class="text-xs font-semibold bg-[var(--color-orange)]/10 text-[var(--color-orange)] px-2 py-1 rounded">En vente</span>
+              </div>
+              <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
+              <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">{m.zone}</p>
+              <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
+                <div>
+                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">Prix</p>
+                  <p class="text-sm font-bold text-[var(--color-anthracite)]">{m.prix}</p>
+                </div>
+                <div>
+                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">CA annuel</p>
+                  <p class="text-sm font-bold text-[var(--color-anthracite)]">{m.ca}</p>
+                </div>
+              </div>
+              <div class="mb-4">
+                <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">Points forts</p>
+                <div class="flex flex-wrap gap-2">
+                  {m.forces.map((f) => (
+                    <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{f}</span>
+                  ))}
+                </div>
+              </div>
+              <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-4">Motif : {m.motif}</p>
+              <a href="#contact-buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+                Demander le dossier
+              </a>
+            </div>
+          </article>
+        ))}
+
+        <!-- Bloc CTA base repreneurs -->
+        <article class="bg-[var(--color-anthracite)] text-white rounded-lg p-8 flex flex-col justify-center items-center text-center">
+          <span class="text-4xl mb-4">🔔</span>
+          <h3 class="text-xl font-bold mb-3">Pas encore le bon dossier ?</h3>
+          <p class="text-white/70 mb-6 text-sm">Rejoignez la base repreneurs et soyez notifié en priorité dès qu'un nouveau mandat correspond à votre recherche.</p>
+          <a href="#contact-buyer" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+            Rejoindre la base
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI TURNKEY -->
+  <section class="py-24 px-6 bg-[var(--color-anthracite)] text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">Pourquoi TurnKey</p>
+        <h2 class="text-3xl md:text-4xl font-bold">La différence entre un agent et un broker qui connaît le métier</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <div class="text-4xl font-bold text-[var(--color-orange)] mb-4">01</div>
+          <h3 class="text-xl font-bold mb-3">Restaurateur avant broker</h3>
+          <p class="text-white/70 leading-relaxed">Je gère APF Café à Lapa. Je connais les coûts, les marges, les pièges — et je le sens quand un dossier tient la route.</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-[var(--color-orange)] mb-4">02</div>
+          <h3 class="text-xl font-bold mb-3">Confidentialité intégrale</h3>
+          <p class="text-white/70 leading-relaxed">Jamais votre enseigne, jamais votre adresse. Teasers aveugles, NDA avant tout dossier détaillé.</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-[var(--color-orange)] mb-4">03</div>
+          <h3 class="text-xl font-bold mb-3">Frais IAD compétitifs</h3>
+          <p class="text-white/70 leading-relaxed">Structure IAD Portugal, honoraires transparents, moins chers qu'un cabinet de conseil M&A classique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>

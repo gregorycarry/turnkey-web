@@ -23,23 +23,25 @@ const mandats = [
 <BaseLayout title="TurnKey — Transmissão de comércios em Lisboa">
 
   <!-- HERO -->
-  <section class="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center bg-[var(--color-cream)] px-6 text-center py-20">
-    <div class="flex flex-col items-center max-w-4xl">
+  <section class="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-6 text-center py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/hero-bg.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-anthracite)]/70 via-[var(--color-anthracite)]/60 to-[var(--color-anthracite)]/80"></div>
+    <div class="relative z-10 flex flex-col items-center max-w-4xl">
       <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-0">
         IAD Portugal — AMI 11220
       </p>
-      <img src="/logo.svg" alt="TurnKey" class="w-full max-w-md md:max-w-lg h-auto -mt-40" />
-      <h1 class="text-2xl md:text-4xl font-bold text-[var(--color-anthracite)] max-w-3xl leading-tight">
+      <h1 class="font-extrabold text-white tracking-tight text-center" style="font-size: clamp(4rem, 14vw, 10rem); line-height: 0.9; letter-spacing: -0.03em;">Turn<span class="text-[var(--color-orange)]">Key</span></h1>
+      <h1 class="text-xl md:text-2xl font-medium text-white max-w-3xl leading-relaxed">
         Restaurateur et broker à Lisbonne. Je vends et j'accompagne les repreneurs de commerces.
       </h1>
-      <p class="text-lg text-[var(--color-anthracite)]/70 mt-6 max-w-2xl">
+      <p class="text-lg text-white/80 mt-6 max-w-2xl">
         Where businesses change hands, not value.
       </p>
       <div class="mt-12 flex flex-col sm:flex-row gap-4">
         <a href="#seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
           Je veux vendre mon commerce
         </a>
-        <a href="#buyer" class="border-2 border-[var(--color-anthracite)] text-[var(--color-anthracite)] px-8 py-4 rounded-md font-semibold hover:bg-[var(--color-anthracite)] hover:text-white transition">
+        <a href="#buyer" class="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-[var(--color-anthracite)] transition">
           Je cherche à reprendre
         </a>
       </div>

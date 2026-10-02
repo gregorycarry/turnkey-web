@@ -30,20 +30,20 @@ const mandats = [
       <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-0">
         IAD Portugal — AMI 11220
       </p>
-      <h1 class="font-extrabold text-white tracking-tight text-center" style="font-size: clamp(4rem, 14vw, 10rem); line-height: 0.9; letter-spacing: -0.03em;">Turn<span class="text-[var(--color-orange)]">Key</span></h1>
-      <h1 class="text-xl md:text-2xl font-medium text-white max-w-3xl leading-relaxed">
+      <h1 class="font-black text-white tracking-tight text-center [font-family:'Playfair_Display',serif]" style="font-size: clamp(4rem, 14vw, 10rem); line-height: 0.9; letter-spacing: -0.03em;">Turn<span class="text-[var(--color-orange)]">Key</span></h1>
+      <h1 class="text-xl md:text-2xl font-medium text-white max-w-3xl leading-relaxed mt-16">
         Restaurateur et broker à Lisbonne. Je vends et j'accompagne les repreneurs de commerces.
       </h1>
       <p class="text-lg text-white/80 mt-6 max-w-2xl">
         Where businesses change hands, not value.
       </p>
       <div class="mt-12 flex flex-col sm:flex-row gap-4">
-        <a href="#seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
+        <button type="button" data-modal="seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
           Je veux vendre mon commerce
-        </a>
-        <a href="#buyer" class="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-[var(--color-anthracite)] transition">
+        </button>
+        <button type="button" data-modal="buyer" class="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-[var(--color-anthracite)] transition">
           Je cherche à reprendre
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -67,9 +67,9 @@ const mandats = [
             <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> Objectif : 45 jours entre mandat et signature</li>
             <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> Accompagnement notaire et bail commercial</li>
           </ul>
-          <a href="#contact-seller" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+          <button type="button" data-modal="seller" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
             Estimer mon commerce
-          </a>
+          </button>
         </div>
         <div id="buyer" class="bg-[var(--color-cream)] p-10 rounded-lg border-t-4 border-[var(--color-anthracite)]">
           <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-4">Vous cherchez à reprendre</h3>
@@ -82,9 +82,9 @@ const mandats = [
             <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> Vision opérateur — je fais tourner un café moi-même</li>
             <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> Négociation prix et conditions</li>
           </ul>
-          <a href="#contact-buyer" class="inline-block bg-[var(--color-anthracite)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+          <button type="button" data-modal="buyer" class="inline-block bg-[var(--color-anthracite)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
             Rejoindre la base repreneurs
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -145,9 +145,9 @@ const mandats = [
                 </div>
               </div>
               <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-4">Motif : {m.motif}</p>
-              <a href="#contact-buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+              <button type="button" data-modal="buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
                 Demander le dossier
-              </a>
+              </button>
             </div>
           </article>
         ))}
@@ -157,9 +157,9 @@ const mandats = [
           <span class="text-4xl mb-4">🔔</span>
           <h3 class="text-xl font-bold mb-3">Pas encore le bon dossier ?</h3>
           <p class="text-white/70 mb-6 text-sm">Rejoignez la base repreneurs et soyez notifié en priorité dès qu'un nouveau mandat correspond à votre recherche.</p>
-          <a href="#contact-buyer" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+          <button type="button" data-modal="buyer" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
             Rejoindre la base
-          </a>
+          </button>
         </article>
       </div>
     </div>
@@ -235,156 +235,6 @@ const mandats = [
     </div>
   </section>
 
-
-  <!-- CONTACT -->
-  <section id="contact" class="py-24 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">Contact</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">Parlons de votre projet</h2>
-        <p class="text-lg text-[var(--color-anthracite)]/70 mt-4 max-w-2xl mx-auto">
-          Confidentialité garantie. Réponse sous 24h ouvrées.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-
-        <!-- FORMULAIRE VENDEUR -->
-        <div id="contact-seller" class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-[var(--color-orange)]">
-          <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">Estimer mon commerce</h3>
-          <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">Vous vendez ? Recevez une estimation gratuite et confidentielle.</p>
-
-          <form action="https://formspree.io/f/xjyklade" method="POST" class="space-y-4">
-            <input type="hidden" name="_subject" value="Nouvelle demande estimation - TurnKey" />
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Nom complet *</label>
-              <input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" />
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Email *</label>
-                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" />
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Téléphone</label>
-                <input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Type de commerce *</label>
-              <select name="type_commerce" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)] bg-white">
-                <option value="">Sélectionnez...</option>
-                <option>Restaurant / Café / Bar</option>
-                <option>Salon / Institut</option>
-                <option>Boutique / Retail</option>
-                <option>Bureau / Espace pro</option>
-                <option>Atypique</option>
-                <option>Autre</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Zone</label>
-              <input type="text" name="zone" placeholder="Ex : Lapa, Chiado, Cascais..." class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" />
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">CA annuel approximatif</label>
-              <input type="text" name="ca_annuel" placeholder="Ex : 200-250k EUR" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" />
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Contexte / Message</label>
-              <textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]"></textarea>
-            </div>
-
-            <button type="submit" class="w-full bg-[var(--color-orange)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">
-              Recevoir mon estimation
-            </button>
-
-            <p class="text-xs text-[var(--color-anthracite)]/60 text-center">Vos données restent confidentielles. Aucune information transmise à des tiers.</p>
-          </form>
-        </div>
-
-        <!-- FORMULAIRE ACHETEUR -->
-        <div id="contact-buyer" class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-[var(--color-anthracite)]">
-          <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">Rejoindre la base repreneurs</h3>
-          <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">Vous cherchez ? Recevez les nouveaux mandats en priorité.</p>
-
-          <form action="https://formspree.io/f/xqpanyow" method="POST" class="space-y-4">
-            <input type="hidden" name="_subject" value="Nouveau repreneur - TurnKey" />
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Nom complet *</label>
-              <input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" />
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Email *</label>
-                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" />
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Téléphone</label>
-                <input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Profil</label>
-              <select name="profil" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white">
-                <option value="">Sélectionnez...</option>
-                <option>Exploitant en activité</option>
-                <option>Premier achat</option>
-                <option>Investisseur</option>
-                <option>Family office</option>
-                <option>Autre</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Type recherché</label>
-              <select name="type_recherche" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white">
-                <option value="">Sélectionnez...</option>
-                <option>F&B (Café / Restaurant / Bar / Hôtel)</option>
-                <option>Commerces (Salon / Boutique / Bureau)</option>
-                <option>Atypique</option>
-                <option>Ouvert à plusieurs</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Budget</label>
-              <select name="budget" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white">
-                <option value="">Sélectionnez...</option>
-                <option>Moins de 100k €</option>
-                <option>100-250k €</option>
-                <option>250-500k €</option>
-                <option>500k-1M €</option>
-                <option>Plus de 1M €</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Zone souhaitée</label>
-              <input type="text" name="zone" placeholder="Ex : Centre Lisbonne, Cascais..." class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" />
-            </div>
-
-            <button type="submit" class="w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">
-              Rejoindre la base
-            </button>
-
-            <p class="text-xs text-[var(--color-anthracite)]/60 text-center">Vous serez notifié par email dès qu'un mandat correspond.</p>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer class="bg-[var(--color-anthracite)] text-white py-16 px-6">
     <div class="max-w-6xl mx-auto">
@@ -401,8 +251,8 @@ const mandats = [
           <p class="text-xs font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-4">Navigation</p>
           <ul class="space-y-2 text-sm text-white/70">
             <li><a href="#properties" class="hover:text-white transition">Mandats en cours</a></li>
-            <li><a href="#seller" class="hover:text-white transition">Vendre</a></li>
-            <li><a href="#buyer" class="hover:text-white transition">Reprendre</a></li>
+            <li><button type="button" data-modal="seller" class="hover:text-white transition">Vendre</button></li>
+            <li><button type="button" data-modal="buyer" class="hover:text-white transition">Reprendre</button></li>
             <li><a href="#about" class="hover:text-white transition">À propos</a></li>
             <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
           </ul>
@@ -432,5 +282,86 @@ const mandats = [
       </div>
     </div>
   </footer>
+
+
+  <!-- MODALES -->
+  <div id="modal-seller" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <button type="button" data-close aria-label="Fermer" class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none z-10">×</button>
+      <div class="p-8 md:p-10 border-t-4 border-[var(--color-orange)] rounded-t-lg">
+        <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">Estimer mon commerce</h3>
+        <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">Vous vendez ? Recevez une estimation gratuite et confidentielle.</p>
+        <form action="https://formspree.io/f/xjyklade" method="POST" class="space-y-4">
+          <input type="hidden" name="_subject" value="Nouvelle demande estimation - TurnKey" />
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Nom complet *</label><input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Email *</label><input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+            <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Téléphone</label><input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+          </div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Type de commerce *</label><select name="type_commerce" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)] bg-white"><option value="">Sélectionnez...</option><option>Restaurant / Café / Bar</option><option>Salon / Institut</option><option>Boutique / Retail</option><option>Bureau / Espace pro</option><option>Atypique</option><option>Autre</option></select></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Zone</label><input type="text" name="zone" placeholder="Ex : Lapa, Chiado, Cascais..." class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">CA annuel approximatif</label><input type="text" name="ca_annuel" placeholder="Ex : 200-250k EUR" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Contexte / Message</label><textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]"></textarea></div>
+          <button type="submit" class="w-full bg-[var(--color-orange)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">Recevoir mon estimation</button>
+          <p class="text-xs text-[var(--color-anthracite)]/60 text-center">Vos données restent confidentielles.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-buyer" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <button type="button" data-close aria-label="Fermer" class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none z-10">×</button>
+      <div class="p-8 md:p-10 border-t-4 border-[var(--color-anthracite)] rounded-t-lg">
+        <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">Rejoindre la base repreneurs</h3>
+        <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">Vous cherchez ? Recevez les nouveaux mandats en priorité.</p>
+        <form action="https://formspree.io/f/xqpanyow" method="POST" class="space-y-4">
+          <input type="hidden" name="_subject" value="Nouveau repreneur - TurnKey" />
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Nom complet *</label><input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Email *</label><input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+            <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Téléphone</label><input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+          </div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Profil</label><select name="profil" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">Sélectionnez...</option><option>Exploitant en activité</option><option>Premier achat</option><option>Investisseur</option><option>Family office</option><option>Autre</option></select></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Type recherché</label><select name="type_recherche" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">Sélectionnez...</option><option>F&B (Café / Restaurant / Bar / Hôtel)</option><option>Commerces (Salon / Boutique / Bureau)</option><option>Atypique</option><option>Ouvert à plusieurs</option></select></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Budget</label><select name="budget" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">Sélectionnez...</option><option>Moins de 100k €</option><option>100-250k €</option><option>250-500k €</option><option>500k-1M €</option><option>Plus de 1M €</option></select></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">Zone souhaitée</label><input type="text" name="zone" placeholder="Ex : Centre Lisbonne, Cascais..." class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+          <button type="submit" class="w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">Rejoindre la base</button>
+          <p class="text-xs text-[var(--color-anthracite)]/60 text-center">Vous serez notifié par email dès qu'un mandat correspond.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-choice" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-lg shadow-2xl max-w-md w-full p-8">
+      <button type="button" data-close aria-label="Fermer" class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none">×</button>
+      <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2 text-center">Comment puis-je vous aider ?</h3>
+      <p class="text-sm text-[var(--color-anthracite)]/70 mb-6 text-center">Choisissez le formulaire adapté à votre projet.</p>
+      <div class="space-y-3">
+        <button type="button" data-modal="seller" class="block w-full bg-[var(--color-orange)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">Je veux vendre mon commerce</button>
+        <button type="button" data-modal="buyer" class="block w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">Je cherche à reprendre</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      function open(id){closeAll();var m=document.getElementById('modal-'+id);if(m){m.classList.remove('hidden');document.body.style.overflow='hidden';}}
+      function closeAll(){document.querySelectorAll('[id^="modal-"]').forEach(function(m){m.classList.add('hidden');});document.body.style.overflow='';}
+      document.addEventListener('click',function(e){
+        var o=e.target.closest('[data-modal]');
+        if(o){e.preventDefault();open(o.dataset.modal);return;}
+        var c=e.target.closest('[data-close]')||(e.target.classList&&e.target.classList.contains('modal-backdrop')?e.target:null);
+        if(c){e.preventDefault();closeAll();return;}
+        var cl=e.target.closest('a[href="#contact"]');
+        if(cl){e.preventDefault();open('choice');}
+      });
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+    })();
+  </script>
 
 </BaseLayout>

@@ -73,78 +73,77 @@ const mandats = [
       </div>
   </section>
 
-  <!-- MANDATS EN COURS -->
+  <!-- A LA UNE -->
   <section id="properties" class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">Portfolio</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">Mandats en cours</h2>
+        <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">À la une</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">Dernières opportunités</h2>
         <p class="text-lg text-[var(--color-anthracite)]/70 mt-4 max-w-2xl mx-auto">
-          Nos dossiers sont présentés en aveugle. Détails complets après signature d'un NDA.
+          Nouveautés, baisses de prix, mandats en priorité — les mouvements récents sur mon portefeuille.
         </p>
       </div>
 
-      <!-- Grille catégories -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        {categories.map((cat) => (
-          <button class="flex flex-col items-center gap-3 p-8 bg-white rounded-lg border border-gray-100 hover:border-[var(--color-orange)] hover:shadow-md transition">
-            <span class="text-5xl">{cat.icon}</span>
-            <span class="text-lg font-bold text-[var(--color-anthracite)]">{cat.label}</span>
-            <span class="text-xs text-[var(--color-anthracite)]/60 text-center">{cat.sub}</span>
-          </button>
-        ))}
-      </div>
+      <div class="grid md:grid-cols-2 gap-8">
 
-      <!-- Cartes mandats -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {mandats.map((m) => (
-          <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition">
-            <div class="h-48 bg-gradient-to-br from-[var(--color-anthracite)] to-[var(--color-orange)]/60 flex items-center justify-center">
-              <span class="text-white text-6xl opacity-30">🏪</span>
+        <!-- Mandat TK-2026-001 avec badge NOUVEAU -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition relative">
+          <div class="absolute top-4 left-4 z-10 bg-[var(--color-orange)] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+            NOUVEAU
+          </div>
+          <div class="h-48 bg-gradient-to-br from-[var(--color-anthracite)] to-[var(--color-orange)]/60"></div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">TK-2026-001</span>
+              <span class="text-xs font-semibold bg-[var(--color-orange)]/10 text-[var(--color-orange)] px-2 py-1 rounded">En vente</span>
             </div>
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
-                <span class="text-xs font-semibold bg-[var(--color-orange)]/10 text-[var(--color-orange)] px-2 py-1 rounded">En vente</span>
-              </div>
-              <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
-              <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">{m.zone}</p>
-              <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
-                <div>
-                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">Prix</p>
-                  <p class="text-sm font-bold text-[var(--color-anthracite)]">{m.prix}</p>
-                </div>
-                <div>
-                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">CA annuel</p>
-                  <p class="text-sm font-bold text-[var(--color-anthracite)]">{m.ca}</p>
-                </div>
-              </div>
-              <div class="mb-4">
-                <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">Points forts</p>
-                <div class="flex flex-wrap gap-2">
-                  {m.forces.map((f) => (
-                    <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{f}</span>
-                  ))}
-                </div>
-              </div>
-              <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-4">Motif : {m.motif}</p>
-              <button type="button" data-modal="buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
-                Demander le dossier
-              </button>
+            <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">Restaurant / Café</h3>
+            <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">Axe Estrela / Lapa</p>
+            <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
+              <div><p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">Prix</p><p class="text-sm font-bold text-[var(--color-anthracite)]">100–150 k€</p></div>
+              <div><p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">CA annuel</p><p class="text-sm font-bold text-[var(--color-anthracite)]">250–290 k€</p></div>
             </div>
-          </article>
-        ))}
+            <div class="mb-4">
+              <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">Points forts</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">Licences complètes</span>
+                <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">Terrasse calme</span>
+                <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">Potentiel développement</span>
+              </div>
+            </div>
+            <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-4">Motif : Réorientation professionnelle</p>
+            <button type="button" data-modal="buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+              Demander le dossier
+            </button>
+          </div>
+        </article>
 
-        <!-- Bloc CTA base repreneurs -->
-        <article class="bg-[var(--color-anthracite)] text-white rounded-lg p-8 flex flex-col justify-center items-center text-center">
-          <span class="text-4xl mb-4">🔔</span>
-          <h3 class="text-xl font-bold mb-3">Pas encore le bon dossier ?</h3>
-          <p class="text-white/70 mb-6 text-sm">Rejoignez la base repreneurs et soyez notifié en priorité dès qu'un nouveau mandat correspond à votre recherche.</p>
+        <!-- Placeholder Prochainement -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-sm border-2 border-dashed border-gray-200 flex flex-col justify-center items-center text-center p-10">
+          <svg class="w-14 h-14 mb-6 text-[var(--color-anthracite)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <circle cx="12" cy="12" r="9" stroke-linecap="round"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/>
+          </svg>
+          <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-3">Prochainement</h3>
+          <p class="text-sm text-[var(--color-anthracite)]/70 mb-6 max-w-sm">
+            Nouveaux mandats en cours de signature. Rejoignez la base repreneurs pour être notifié en priorité dès qu'un dossier correspond à votre recherche.
+          </p>
           <button type="button" data-modal="buyer" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
             Rejoindre la base
           </button>
         </article>
+
       </div>
+
+      <!-- Légende des badges (discrète) -->
+      <div class="mt-16 pt-8 border-t border-gray-200 flex flex-wrap justify-center gap-6 text-xs text-[var(--color-anthracite)]/60">
+        <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-[var(--color-orange)]"></span>Nouveau</span>
+        <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-600"></span>Baisse de prix</span>
+        <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-600"></span>Urgent</span>
+        <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-500"></span>Coup de cœur</span>
+      </div>
+
     </div>
   </section>
 

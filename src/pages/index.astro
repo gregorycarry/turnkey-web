@@ -35,18 +35,9 @@ const mandats = [
         Cessions et acquisitions de fonds de commerce à Lisbonne.<br />Un œil d'exploitant au service de la transaction.
       </h1>
       <p class="text-lg text-white/80 mt-6 max-w-2xl">
-        Where businesses change hands, not value.
+        Transmettre un commerce, pas sa valeur.
       </p>
-      <div class="mt-12 flex flex-col sm:flex-row gap-4">
-        <button type="button" data-modal="seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
-          Je veux vendre mon commerce
-        </button>
-        <button type="button" data-modal="buyer" class="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-[var(--color-anthracite)] transition">
-          Je cherche à reprendre
-        </button>
-      </div>
-
-      <div class="mt-14 w-full max-w-3xl">
+      <div class="mt-14 w-full max-w-3xl relative z-10">
         <div class="flex items-center justify-center gap-4 mb-5">
           <div class="h-px bg-white/30 flex-1 max-w-[80px]"></div>
           <span class="text-xs font-semibold tracking-widest text-white/70 uppercase">Voir les mandats</span>
@@ -54,20 +45,32 @@ const mandats = [
         </div>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#properties" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-md font-semibold hover:bg-white/20 transition flex flex-col items-center gap-1">
+            <svg class="w-7 h-7 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v6a2 2 0 002 2v10M7 3v8M11 3v18M15 3h4a2 2 0 012 2v6h-2v10"/></svg>
             <span>F&B</span>
             <span class="text-[10px] font-normal text-white/60 tracking-wide">Café · Restaurant · Bar · Hôtel</span>
           </a>
           <a href="#properties" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-md font-semibold hover:bg-white/20 transition flex flex-col items-center gap-1">
+            <svg class="w-7 h-7 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"/></svg>
             <span>Commerces</span>
             <span class="text-[10px] font-normal text-white/60 tracking-wide">Salon · Boutique · Bureau</span>
           </a>
           <a href="#properties" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-md font-semibold hover:bg-white/20 transition flex flex-col items-center gap-1">
+            <svg class="w-7 h-7 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6L15.5 18.5l2.6-.9L19 15z"/></svg>
             <span>Atypique</span>
             <span class="text-[10px] font-normal text-white/60 tracking-wide">Espace singulier</span>
           </a>
         </div>
       </div>
     </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 relative z-10">
+        <button type="button" data-modal="seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
+          Je veux vendre mon commerce
+        </button>
+        <button type="button" data-modal="buyer" class="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-[var(--color-anthracite)] transition">
+          Je cherche à reprendre
+        </button>
+      </div>
   </section>
 
   <!-- MANDATS EN COURS -->

@@ -1,0 +1,380 @@
+---
+import { useTranslations } from "../i18n/utils";
+import type { Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Build the About.p3 paragraph with inline strong tags
+const p3Template = t("about.p3");
+const p3Sellers = `<strong class="text-[var(--color-anthracite)]">${t("about.p3Sellers")}</strong>`;
+const p3Buyers = `<strong class="text-[var(--color-anthracite)]">${t("about.p3Buyers")}</strong>`;
+const p3Html = p3Template.replace("{sellers}", p3Sellers).replace("{buyers}", p3Buyers);
+---
+
+<!-- HERO -->
+<section class="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-6 text-center py-20 overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/hero-bg.jpg');"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-anthracite)]/70 via-[var(--color-anthracite)]/60 to-[var(--color-anthracite)]/80"></div>
+  <div class="relative z-10 flex flex-col items-center max-w-4xl">
+    <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-0">
+      {t("hero.license")}
+    </p>
+    <h1 class="font-black text-white tracking-tight text-center [font-family:'Playfair_Display',serif]" style="font-size: clamp(4rem, 14vw, 10rem); line-height: 0.9; letter-spacing: -0.03em;">Turn<span class="text-[var(--color-orange)]">Key</span></h1>
+    <h2 class="text-xl md:text-2xl font-medium text-white max-w-3xl leading-relaxed mt-16">
+      {t("hero.titleLine1")}<br />{t("hero.titleLine2")}
+    </h2>
+    <p class="text-lg text-white/80 mt-6 max-w-2xl">
+      {t("hero.tagline")}
+    </p>
+    <div class="mt-14 w-full max-w-3xl relative z-10">
+      <div class="flex items-center justify-center gap-4 mb-5">
+        <div class="h-px bg-white/30 flex-1 max-w-[80px]"></div>
+        <span class="text-xs font-semibold tracking-widest text-white/70 uppercase">{t("hero.seeMandates")}</span>
+        <div class="h-px bg-white/30 flex-1 max-w-[80px]"></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#properties" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-md font-semibold hover:bg-white/20 transition flex flex-col items-center gap-1">
+          <svg class="w-7 h-7 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v6a2 2 0 002 2v10M7 3v8M11 3v18M15 3h4a2 2 0 012 2v6h-2v10"/></svg>
+          <span>{t("hero.catFB")}</span>
+        </a>
+        <a href="#properties" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-md font-semibold hover:bg-white/20 transition flex flex-col items-center gap-1">
+          <svg class="w-7 h-7 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"/></svg>
+          <span>{t("hero.catCommerce")}</span>
+        </a>
+        <a href="#properties" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-md font-semibold hover:bg-white/20 transition flex flex-col items-center gap-1">
+          <svg class="w-7 h-7 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6L15.5 18.5l2.6-.9L19 15z"/></svg>
+          <span>{t("hero.catAtypical")}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+    <div class="mt-12 flex flex-col sm:flex-row gap-4 relative z-10">
+      <button type="button" data-modal="seller" class="bg-[var(--color-orange)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition">
+        {t("hero.ctaSell")}
+      </button>
+      <button type="button" data-modal="buyer" class="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-[var(--color-anthracite)] transition">
+        {t("hero.ctaBuy")}
+      </button>
+    </div>
+</section>
+
+<!-- A LA UNE -->
+<section id="properties" class="py-24 px-6 bg-[var(--color-cream)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">{t("featured.eyebrow")}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">{t("featured.title")}</h2>
+      <p class="text-lg text-[var(--color-anthracite)]/70 mt-4 max-w-2xl mx-auto">
+        {t("featured.subtitle")}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition relative">
+        <div class="absolute top-4 left-4 z-10 bg-[var(--color-orange)] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+          {t("featured.badgeNew")}
+        </div>
+        <div class="h-48 bg-gradient-to-br from-[var(--color-anthracite)] to-[var(--color-orange)]/60"></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">TK-2026-001</span>
+            <span class="text-xs font-semibold bg-[var(--color-orange)]/10 text-[var(--color-orange)] px-2 py-1 rounded">{t("featured.forSale")}</span>
+          </div>
+          <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{t("featured.mandateType")}</h3>
+          <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">{t("featured.mandateZone")}</p>
+          <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
+            <div><p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{t("featured.price")}</p><p class="text-sm font-bold text-[var(--color-anthracite)]">100–150 k€</p></div>
+            <div><p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{t("featured.turnover")}</p><p class="text-sm font-bold text-[var(--color-anthracite)]">250–290 k€</p></div>
+          </div>
+          <div class="mb-4">
+            <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{t("featured.strengths")}</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{t("featured.strength1")}</span>
+              <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{t("featured.strength2")}</span>
+              <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{t("featured.strength3")}</span>
+            </div>
+          </div>
+          <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-4">{t("featured.reason")} : {t("featured.reasonValue")}</p>
+          <button type="button" data-modal="buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+            {t("featured.requestFile")}
+          </button>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg overflow-hidden shadow-sm border-2 border-dashed border-gray-200 flex flex-col justify-center items-center text-center p-10">
+        <svg class="w-14 h-14 mb-6 text-[var(--color-anthracite)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <circle cx="12" cy="12" r="9" stroke-linecap="round"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/>
+        </svg>
+        <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-3">{t("featured.soonTitle")}</h3>
+        <p class="text-sm text-[var(--color-anthracite)]/70 mb-6 max-w-sm">
+          {t("featured.soonText")}
+        </p>
+        <button type="button" data-modal="buyer" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+          {t("featured.joinBase")}
+        </button>
+      </article>
+
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-gray-200 flex flex-wrap justify-center gap-6 text-xs text-[var(--color-anthracite)]/60">
+      <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-[var(--color-orange)]"></span>{t("featured.legendNew")}</span>
+      <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-600"></span>{t("featured.legendDrop")}</span>
+      <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-600"></span>{t("featured.legendUrgent")}</span>
+      <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-500"></span>{t("featured.legendFav")}</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOUBLE PARCOURS -->
+<section id="sell-rent" class="py-24 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">{t("paths.eyebrow")}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">{t("paths.title")}</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div id="seller" class="bg-[var(--color-cream)] p-10 rounded-lg border-t-4 border-[var(--color-orange)]">
+        <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-4">{t("paths.sellerTitle")}</h3>
+        <p class="text-[var(--color-anthracite)]/80 mb-6 leading-relaxed">
+          {t("paths.sellerText")}
+        </p>
+        <ul class="space-y-3 mb-8 text-[var(--color-anthracite)]/80">
+          <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> {t("paths.sellerBullet1")}</li>
+          <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> {t("paths.sellerBullet2")}</li>
+          <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> {t("paths.sellerBullet3")}</li>
+          <li class="flex gap-3"><span class="text-[var(--color-orange)] font-bold">✓</span> {t("paths.sellerBullet4")}</li>
+        </ul>
+        <button type="button" data-modal="seller" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+          {t("paths.sellerCta")}
+        </button>
+      </div>
+      <div id="buyer" class="bg-[var(--color-cream)] p-10 rounded-lg border-t-4 border-[var(--color-anthracite)]">
+        <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-4">{t("paths.buyerTitle")}</h3>
+        <p class="text-[var(--color-anthracite)]/80 mb-6 leading-relaxed">
+          {t("paths.buyerText")}
+        </p>
+        <ul class="space-y-3 mb-8 text-[var(--color-anthracite)]/80">
+          <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> {t("paths.buyerBullet1")}</li>
+          <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> {t("paths.buyerBullet2")}</li>
+          <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> {t("paths.buyerBullet3")}</li>
+          <li class="flex gap-3"><span class="text-[var(--color-anthracite)] font-bold">✓</span> {t("paths.buyerBullet4")}</li>
+        </ul>
+        <button type="button" data-modal="buyer" class="inline-block bg-[var(--color-anthracite)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
+          {t("paths.buyerCta")}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI TURNKEY -->
+<section class="py-24 px-6 bg-[var(--color-anthracite)] text-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">{t("why.eyebrow")}</p>
+      <h2 class="text-3xl md:text-4xl font-bold">{t("why.title")}</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-4xl font-bold text-[var(--color-orange)] mb-4">01</div>
+        <h3 class="text-xl font-bold mb-3">{t("why.card1Title")}</h3>
+        <p class="text-white/70 leading-relaxed">{t("why.card1Text")}</p>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-[var(--color-orange)] mb-4">02</div>
+        <h3 class="text-xl font-bold mb-3">{t("why.card2Title")}</h3>
+        <p class="text-white/70 leading-relaxed">{t("why.card2Text")}</p>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-[var(--color-orange)] mb-4">03</div>
+        <h3 class="text-xl font-bold mb-3">{t("why.card3Title")}</h3>
+        <p class="text-white/70 leading-relaxed">{t("why.card3Text")}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="py-24 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-sm font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-3">{t("about.eyebrow")}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-anthracite)]">{t("about.title")}</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-12 items-start">
+      <div class="md:col-span-1">
+        <div class="relative">
+          <img src="/photogreg.jpg" alt="Grégory Vincent" class="w-full rounded-lg shadow-xl" />
+          <div class="absolute -bottom-4 -right-4 bg-[var(--color-orange)] text-white px-4 py-2 rounded-md text-sm font-semibold">AMI 11220</div>
+        </div>
+        <div class="mt-10 bg-[var(--color-cream)] p-6 rounded-lg">
+          <p class="text-xs font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-4">{t("about.inBriefLabel")}</p>
+          <ul class="space-y-3 text-sm text-[var(--color-anthracite)]">
+            <li class="flex justify-between"><span class="text-[var(--color-anthracite)]/60">{t("about.structureLabel")}</span><span class="font-semibold">{t("about.structureValue")}</span></li>
+            <li class="flex justify-between"><span class="text-[var(--color-anthracite)]/60">{t("about.zoneLabel")}</span><span class="font-semibold">{t("about.zoneValue")}</span></li>
+            <li class="flex justify-between"><span class="text-[var(--color-anthracite)]/60">{t("about.languagesLabel")}</span><span class="font-semibold">{t("about.languagesValue")}</span></li>
+            <li class="flex justify-between"><span class="text-[var(--color-anthracite)]/60">{t("about.focusLabel")}</span><span class="font-semibold">{t("about.focusValue")}</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="text-3xl font-bold text-[var(--color-anthracite)] mb-2">{t("about.name")}</h3>
+        <p class="text-lg text-[var(--color-orange)] font-semibold mb-8">{t("about.role")}</p>
+        <div class="space-y-5 text-[var(--color-anthracite)]/80 leading-relaxed">
+          <p>{t("about.p1")}</p>
+          <p>{t("about.p2")}</p>
+          <p set:html={p3Html}></p>
+          <p>{t("about.p4")}</p>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="https://wa.me/351962350026" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-md font-semibold hover:opacity-90 transition">WhatsApp</a>
+          <a href="mailto:gregory.vincent@iadportugal.pt" class="inline-flex items-center gap-2 bg-[var(--color-anthracite)] text-white px-5 py-3 rounded-md font-semibold hover:opacity-90 transition">Email</a>
+          <a href="tel:+351962350026" class="inline-flex items-center gap-2 bg-[var(--color-orange)] text-white px-5 py-3 rounded-md font-semibold hover:opacity-90 transition">{t("about.call")}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[var(--color-anthracite)] text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+
+      <div class="md:col-span-2">
+        <img src="/logo.svg" alt="TurnKey" class="w-40 h-auto mb-4 bg-white p-2 rounded" />
+        <p class="text-white/70 text-sm leading-relaxed max-w-md">
+          {t("footer.description")}
+        </p>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-4">{t("footer.navLabel")}</p>
+        <ul class="space-y-2 text-sm text-white/70">
+          <li><a href="#properties" class="hover:text-white transition">{t("footer.navMandates")}</a></li>
+          <li><button type="button" data-modal="seller" class="hover:text-white transition">{t("footer.navSell")}</button></li>
+          <li><button type="button" data-modal="buyer" class="hover:text-white transition">{t("footer.navBuy")}</button></li>
+          <li><a href="#about" class="hover:text-white transition">{t("footer.navAbout")}</a></li>
+          <li><a href="#contact" class="hover:text-white transition">{t("footer.navContact")}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold tracking-widest text-[var(--color-orange)] uppercase mb-4">{t("footer.contactLabel")}</p>
+        <ul class="space-y-2 text-sm text-white/70">
+          <li><a href="mailto:gregory.vincent@iadportugal.pt" class="hover:text-white transition">gregory.vincent@iadportugal.pt</a></li>
+          <li><a href="tel:+351962350026" class="hover:text-white transition">+351 962 350 026</a></li>
+          <li><a href="https://wa.me/351962350026" target="_blank" rel="noopener" class="hover:text-white transition">WhatsApp</a></li>
+          <li class="pt-2 text-white/50 text-xs">{t("footer.location")}</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <p class="text-xs text-white/50">
+        {t("footer.copyright")}
+      </p>
+      <div class="flex gap-6 text-xs text-white/50">
+        <a href={lang === "pt" ? "/legal/mentions-legales" : `/${lang}/legal/mentions-legales`} class="hover:text-white transition">{t("footer.legalMentions")}</a>
+        <a href={lang === "pt" ? "/legal/confidentialite" : `/${lang}/legal/confidentialite`} class="hover:text-white transition">{t("footer.privacy")}</a>
+        <a href={lang === "pt" ? "/legal/cookies" : `/${lang}/legal/cookies`} class="hover:text-white transition">{t("footer.cookies")}</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- MODALES -->
+<div id="modal-seller" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <button type="button" data-close aria-label={t("modal.close")} class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none z-10">×</button>
+    <div class="p-8 md:p-10 border-t-4 border-[var(--color-orange)] rounded-t-lg">
+      <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">{t("modal.sellerTitle")}</h3>
+      <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">{t("modal.sellerIntro")}</p>
+      <form action="https://formspree.io/f/xjyklade" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value={t("modal.subjectSeller")} />
+        <input type="hidden" name="_lang" value={lang} />
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.fullNameLabel")}</label><input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.emailLabel")}</label><input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.phoneLabel")}</label><input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+        </div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.commerceTypeLabel")}</label><select name="type_commerce" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)] bg-white"><option value="">{t("modal.selectPlaceholder")}</option><option>{t("modal.commerceOpt1")}</option><option>{t("modal.commerceOpt2")}</option><option>{t("modal.commerceOpt3")}</option><option>{t("modal.commerceOpt4")}</option><option>{t("modal.commerceOpt5")}</option><option>{t("modal.commerceOpt6")}</option></select></div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.zoneLabel")}</label><input type="text" name="zone" placeholder={t("modal.zonePlaceholderSeller")} class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.turnoverLabel")}</label><input type="text" name="ca_annuel" placeholder={t("modal.turnoverPlaceholder")} class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]" /></div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.messageLabel")}</label><textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-orange)]"></textarea></div>
+        <button type="submit" class="w-full bg-[var(--color-orange)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">{t("modal.submitSeller")}</button>
+        <p class="text-xs text-[var(--color-anthracite)]/60 text-center">{t("modal.confidentialNote")}</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="modal-buyer" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <button type="button" data-close aria-label={t("modal.close")} class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none z-10">×</button>
+    <div class="p-8 md:p-10 border-t-4 border-[var(--color-anthracite)] rounded-t-lg">
+      <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">{t("modal.buyerTitle")}</h3>
+      <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">{t("modal.buyerIntro")}</p>
+      <form action="https://formspree.io/f/xqpanyow" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value={t("modal.subjectBuyer")} />
+        <input type="hidden" name="_lang" value={lang} />
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.fullNameLabel")}</label><input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.emailLabel")}</label><input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.phoneLabel")}</label><input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+        </div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.profileLabel")}</label><select name="profil" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">{t("modal.selectPlaceholder")}</option><option>{t("modal.profileOpt1")}</option><option>{t("modal.profileOpt2")}</option><option>{t("modal.profileOpt3")}</option><option>{t("modal.profileOpt4")}</option><option>{t("modal.profileOpt5")}</option></select></div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.searchTypeLabel")}</label><select name="type_recherche" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">{t("modal.selectPlaceholder")}</option><option>{t("modal.searchOpt1")}</option><option>{t("modal.searchOpt2")}</option><option>{t("modal.searchOpt3")}</option><option>{t("modal.searchOpt4")}</option></select></div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.budgetLabel")}</label><select name="budget" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">{t("modal.selectPlaceholder")}</option><option>{t("modal.budgetOpt1")}</option><option>{t("modal.budgetOpt2")}</option><option>{t("modal.budgetOpt3")}</option><option>{t("modal.budgetOpt4")}</option><option>{t("modal.budgetOpt5")}</option></select></div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.zoneWishLabel")}</label><input type="text" name="zone" placeholder={t("modal.zonePlaceholderBuyer")} class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+        <button type="submit" class="w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">{t("modal.submitBuyer")}</button>
+        <p class="text-xs text-[var(--color-anthracite)]/60 text-center">{t("modal.buyerNote")}</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="modal-choice" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-lg shadow-2xl max-w-md w-full p-8">
+    <button type="button" data-close aria-label={t("modal.close")} class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none">×</button>
+    <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2 text-center">{t("modal.choiceTitle")}</h3>
+    <p class="text-sm text-[var(--color-anthracite)]/70 mb-6 text-center">{t("modal.choiceIntro")}</p>
+    <div class="space-y-3">
+      <button type="button" data-modal="seller" class="block w-full bg-[var(--color-orange)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">{t("hero.ctaSell")}</button>
+      <button type="button" data-modal="buyer" class="block w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">{t("hero.ctaBuy")}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    function open(id: string){closeAll();var m=document.getElementById('modal-'+id);if(m){m.classList.remove('hidden');document.body.style.overflow='hidden';}}
+    function closeAll(){document.querySelectorAll('[id^="modal-"]').forEach(function(m){m.classList.add('hidden');});document.body.style.overflow='';}
+    document.addEventListener('click',function(e){
+      var target = e.target as HTMLElement;
+      var o = target.closest('[data-modal]') as HTMLElement | null;
+      if(o){e.preventDefault();open(o.dataset.modal!);return;}
+      var c = target.closest('[data-close]') || (target.classList && target.classList.contains('modal-backdrop')?target:null);
+      if(c){e.preventDefault();closeAll();return;}
+      var cl = target.closest('a[href="#contact"]');
+      if(cl){e.preventDefault();open('choice');}
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+  })();
+</script>

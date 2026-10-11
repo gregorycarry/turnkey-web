@@ -20,6 +20,8 @@ const guideUrl =
   lang === "pt" ? "/guia-trespasse" : lang === "fr" ? "/fr/guide-trespasse" : "/en/trespasse-guide";
 const faqUrl =
   lang === "pt" ? "/faq-trespasse" : lang === "fr" ? "/fr/faq-trespasse" : "/en/trespasse-faq";
+const marketUrl =
+  lang === "pt" ? "/mercado-trespasse" : lang === "fr" ? "/fr/marche-trespasse" : "/en/trespasse-market";
 ---
 
 <!-- HERO -->
@@ -270,6 +272,7 @@ const faqUrl =
           <li><button type="button" data-modal="buyer" class="hover:text-white transition">{t("footer.navBuy")}</button></li>
           <li><a href={guideUrl} class="hover:text-white transition">{t("footer.navGuide")}</a></li>
           <li><a href={faqUrl} class="hover:text-white transition">{t("footer.navFaq")}</a></li>
+          <li><a href={marketUrl} class="hover:text-white transition">{t("footer.navMarket")}</a></li>
           <li><a href="#about" class="hover:text-white transition">{t("footer.navAbout")}</a></li>
           <li><a href="#contact" class="hover:text-white transition">{t("footer.navContact")}</a></li>
         </ul>

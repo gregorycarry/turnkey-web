@@ -4,21 +4,27 @@ import type { Lang } from "../i18n/ui";
 
 interface Props {
   lang: Lang;
+  /** Overrides for pages whose URL slug differs by language (e.g. guides) */
+  langUrls?: Partial<Record<Lang, string>>;
 }
 
-const { lang } = Astro.props;
+const { lang, langUrls } = Astro.props;
 const t = useTranslations(lang);
 const pathNoLang = getPathWithoutLang(Astro.url);
 
+// Home links point back to the language's homepage (not the current page)
+const homeLinkPrefix = (code: Lang) => (code === "pt" ? "/" : `/${code}/`);
+
 const navLinks = [
-  { href: "#properties", label: t("nav.mandates") },
-  { href: "#sell-rent", label: t("nav.sellRent") },
-  { href: "#about", label: t("nav.about") },
-  { href: "#testimonials", label: t("nav.testimonials") },
-  { href: "#contact", label: t("nav.contact") },
+  { href: `${homeLinkPrefix(lang)}#properties`, label: t("nav.mandates") },
+  { href: `${homeLinkPrefix(lang)}#sell-rent`, label: t("nav.sellRent") },
+  { href: `${homeLinkPrefix(lang)}#about`, label: t("nav.about") },
+  { href: `${homeLinkPrefix(lang)}#testimonials`, label: t("nav.testimonials") },
+  { href: `${homeLinkPrefix(lang)}#contact`, label: t("nav.contact") },
 ];
 
 const buildLangPath = (code: Lang) => {
+  if (langUrls && langUrls[code]) return langUrls[code]!;
   if (code === "pt") return pathNoLang === "/" ? "/" : pathNoLang;
   return `/${code}${pathNoLang === "/" ? "" : pathNoLang}`;
 };

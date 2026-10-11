@@ -14,6 +14,10 @@ const p3Template = t("about.p3");
 const p3Sellers = `<strong class="text-[var(--color-anthracite)]">${t("about.p3Sellers")}</strong>`;
 const p3Buyers = `<strong class="text-[var(--color-anthracite)]">${t("about.p3Buyers")}</strong>`;
 const p3Html = p3Template.replace("{sellers}", p3Sellers).replace("{buyers}", p3Buyers);
+
+// URL of the trespasse guide for this language (slug differs across languages)
+const guideUrl =
+  lang === "pt" ? "/guia-trespasse" : lang === "fr" ? "/fr/guide-trespasse" : "/en/trespasse-guide";
 ---
 
 <!-- HERO -->
@@ -262,6 +266,7 @@ const p3Html = p3Template.replace("{sellers}", p3Sellers).replace("{buyers}", p3
           <li><a href="#properties" class="hover:text-white transition">{t("footer.navMandates")}</a></li>
           <li><button type="button" data-modal="seller" class="hover:text-white transition">{t("footer.navSell")}</button></li>
           <li><button type="button" data-modal="buyer" class="hover:text-white transition">{t("footer.navBuy")}</button></li>
+          <li><a href={guideUrl} class="hover:text-white transition">{t("footer.navGuide")}</a></li>
           <li><a href="#about" class="hover:text-white transition">{t("footer.navAbout")}</a></li>
           <li><a href="#contact" class="hover:text-white transition">{t("footer.navContact")}</a></li>
         </ul>

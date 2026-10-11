@@ -8,9 +8,12 @@ interface Props {
   lang: Lang;
   title?: string;
   description?: string;
+  /** Overrides for pages whose URL slug differs by language (e.g. guides).
+   *  Keys are language codes, values are site-relative paths like "/guia-trespasse". */
+  langUrls?: Partial<Record<Lang, string>>;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, langUrls } = Astro.props;
 const t = useTranslations(lang);
 const pageTitle = title ?? t("meta.title");
 const pageDescription = description ?? t("meta.description");
@@ -20,6 +23,7 @@ const htmlLang = t("htmlLang");
 const pathNoLang = getPathWithoutLang(Astro.url);
 const buildAltUrl = (code: Lang) => {
   const base = "https://turnkey.pt";
+  if (langUrls && langUrls[code]) return base + langUrls[code]!;
   if (code === defaultLang) return base + (pathNoLang === "/" ? "/" : pathNoLang);
   return `${base}/${code}${pathNoLang === "/" ? "" : pathNoLang}`;
 };
@@ -69,7 +73,7 @@ const buildAltUrl = (code: Lang) => {
     <meta name="twitter:image" content="https://turnkey.pt/og-image.jpg" />
   </head>
   <body>
-    <Header lang={lang} />
+    <Header lang={lang} langUrls={langUrls} />
     <main>
       <slot />
     </main>

@@ -24,6 +24,68 @@ const marketUrl =
   lang === "pt" ? "/mercado-trespasse" : lang === "fr" ? "/fr/marche-trespasse" : "/en/trespasse-market";
 const casesUrl =
   lang === "pt" ? "/casos-clientes" : lang === "fr" ? "/fr/cas-clients" : "/en/case-studies";
+
+// Translation helper for inline multilingual content on mandate cards
+const tr = (pt: string, fr: string, en: string) => (lang === "pt" ? pt : lang === "fr" ? fr : en);
+
+// Active mandates (featured listings) — translations inline so we don't bloat ui.ts
+const newListings = [
+  {
+    code: "TK-2026-002",
+    type: tr("Cabeleireiro / Salão", "Salon de coiffure", "Hair salon"),
+    zone: tr("Eixo Amoreiras / Marquês de Pombal", "Axe Amoreiras / Marquês de Pombal", "Amoreiras / Marquês de Pombal axis"),
+    kind: "trespasse" as const,
+    metrics: [
+      { label: tr("Área", "Surface", "Area"), value: "240 m²" },
+      { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
+    ],
+    strengths: [
+      tr("Grande superfície", "Grande surface", "Large unit"),
+      tr("Zona premium escritórios/residencial", "Quartier bureaux/résidentiel premium", "Premium office/residential area"),
+      tr("Equipamento completo", "Équipement complet", "Full equipment"),
+    ],
+    reason: tr("Transmissão de propriedade", "Transmission de propriété", "Ownership transition"),
+  },
+  {
+    code: "TK-2026-003",
+    type: tr("Restaurante com esplanadas", "Restaurant avec terrasses", "Restaurant with terraces"),
+    zone: tr("Graça / Lisboa Centro", "Graça / Lisbonne Centre", "Graça / Central Lisbon"),
+    kind: "trespasse" as const,
+    metrics: [
+      { label: tr("Capacidade total", "Capacité totale", "Total capacity"), value: tr("~90 lugares", "~90 places", "~90 seats") },
+      { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
+    ],
+    strengths: [
+      tr("Esplanada de rua (10 lugares)", "Terrasse de rue (10 places)", "Street terrace (10 seats)"),
+      tr("Sala interior 50 lugares", "Salle intérieure 50 places", "Indoor room 50 seats"),
+      tr("Jardim interior 30 lugares", "Jardin intérieur 30 places", "Indoor garden 30 seats"),
+    ],
+    reason: tr("Reorientação profissional", "Réorientation professionnelle", "Career change"),
+  },
+  {
+    code: "TK-2026-004",
+    type: tr("Paredes comerciais (loja)", "Murs commerciaux (local)", "Commercial walls (unit)"),
+    zone: tr("Alcântara / Lisboa", "Alcântara / Lisbonne", "Alcântara / Lisbon"),
+    kind: "walls" as const,
+    metrics: [
+      { label: tr("Área", "Surface", "Area"), value: "80 m²" },
+      { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
+    ],
+    strengths: [
+      tr("Investimento imobiliário puro", "Investissement immobilier pur", "Pure real-estate investment"),
+      tr("Rendimento locativo potencial", "Rendement locatif potentiel", "Rental yield potential"),
+      tr("Zona em revalorização", "Quartier en revalorisation", "Area in revaluation"),
+    ],
+    reason: tr("Venda proprietário", "Vente propriétaire", "Owner sale"),
+  },
+];
+
+const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
+const labelReason = tr("Motivo", "Motif", "Reason");
+const labelRequestFile = tr("Pedir o dossier", "Demander le dossier", "Request the file");
+const labelBadgeNew = tr("NOVO", "NOUVEAU", "NEW");
+const labelBadgeWalls = tr("MUROS / INVEST.", "MURS / INVEST.", "WALLS / INVEST.");
+const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
 ---
 
 <!-- HERO -->
@@ -116,19 +178,55 @@ const casesUrl =
         </div>
       </article>
 
-      <article class="bg-white rounded-lg overflow-hidden shadow-sm border-2 border-dashed border-gray-200 flex flex-col justify-center items-center text-center p-10">
-        <svg class="w-14 h-14 mb-6 text-[var(--color-anthracite)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-          <circle cx="12" cy="12" r="9" stroke-linecap="round"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/>
-        </svg>
-        <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-3">{t("featured.soonTitle")}</h3>
-        <p class="text-sm text-[var(--color-anthracite)]/70 mb-6 max-w-sm">
-          {t("featured.soonText")}
-        </p>
-        <button type="button" data-modal="buyer" class="inline-block bg-[var(--color-orange)] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition">
-          {t("featured.joinBase")}
-        </button>
-      </article>
+      {newListings.map((m) => {
+        const isWalls = m.kind === "walls";
+        const badgeLabel = isWalls ? labelBadgeWalls : labelBadgeNew;
+        const badgeBg = isWalls ? "bg-[var(--color-gold)]" : "bg-[var(--color-orange)]";
+        const headerGradient = isWalls
+          ? "from-[var(--color-anthracite)] to-[var(--color-gold)]/60"
+          : "from-[var(--color-anthracite)] to-[var(--color-orange)]/60";
+        return (
+          <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition relative">
+            <div class={`absolute top-4 left-4 z-10 ${badgeBg} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5`}>
+              {isWalls ? (
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2h-4v-7h-6v7H5a2 2 0 01-2-2V10z"/></svg>
+              ) : (
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+              )}
+              {badgeLabel}
+            </div>
+            <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
+                <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
+              </div>
+              <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
+              <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">{m.zone}</p>
+              <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
+                {m.metrics.map((metric) => (
+                  <div>
+                    <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{metric.label}</p>
+                    <p class="text-sm font-bold text-[var(--color-anthracite)]">{metric.value}</p>
+                  </div>
+                ))}
+              </div>
+              <div class="mb-4">
+                <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelStrengths}</p>
+                <div class="flex flex-wrap gap-2">
+                  {m.strengths.map((s) => (
+                    <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{s}</span>
+                  ))}
+                </div>
+              </div>
+              <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-4">{labelReason} : {m.reason}</p>
+              <button type="button" data-modal="buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+                {labelRequestFile}
+              </button>
+            </div>
+          </article>
+        );
+      })}
 
     </div>
 

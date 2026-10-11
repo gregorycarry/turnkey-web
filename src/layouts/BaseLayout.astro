@@ -83,8 +83,9 @@ const buildAltUrl = (code: Lang) => {
       // Rules:
       // - If user already picked a language (localStorage.tkLang), respect it.
       // - Else, read navigator.language. fr-* → /fr/ ; en-* → /en/ ; else stay PT.
-      // - Only applies when the current page's language can be inferred to be PT (root path
-      //   or no /fr /en prefix) to avoid redirect loops.
+      // - Only applies when the current page is the PT (default) version — avoids loops.
+      // - Uses the page's own hreflang alternates when available (handles pages whose slug
+      //   differs across languages, e.g. the Trespasse guide: guia-trespasse / guide-trespasse / trespasse-guide).
       (function () {
         try {
           var stored = localStorage.getItem("tkLang");
@@ -93,26 +94,42 @@ const buildAltUrl = (code: Lang) => {
           var isEn = path.startsWith("/en/") || path === "/en";
           var currentLang = isFr ? "fr" : isEn ? "en" : "pt";
 
-          // If stored preference exists, persist on nav and respect it
+          function resolveTargetForLang(targetLang) {
+            if (targetLang === currentLang) return null;
+            var hreflangMap = { pt: "pt-PT", fr: "fr", en: "en" };
+            var el = document.querySelector(
+              'link[rel="alternate"][hreflang="' + hreflangMap[targetLang] + '"]'
+            );
+            if (el && el.href) {
+              try {
+                var u = new URL(el.href);
+                return u.pathname + window.location.search + window.location.hash;
+              } catch (e) {}
+            }
+            // Fallback: naive prefix (same-slug pages)
+            if (targetLang === "pt") {
+              return path + window.location.search + window.location.hash;
+            }
+            return "/" + targetLang + (path === "/" ? "" : path) + window.location.search + window.location.hash;
+          }
+
+          // Stored preference overrides when we're on the PT (default) page
           if (stored && stored !== currentLang && ["pt", "fr", "en"].indexOf(stored) !== -1) {
-            // Only redirect if we are on the PT version (default) and user prefers another
             if (currentLang === "pt") {
-              var pathSansLang = path;
-              var target = stored === "pt" ? pathSansLang : "/" + stored + (pathSansLang === "/" ? "" : pathSansLang);
-              window.location.replace(target + window.location.search + window.location.hash);
+              var target = resolveTargetForLang(stored);
+              if (target) window.location.replace(target);
               return;
             }
           }
 
-          // First visit: auto-detect only on PT pages (default) if nothing stored
+          // First visit: auto-detect only on PT pages if nothing stored
           if (!stored && currentLang === "pt") {
             var nav = (navigator.language || "pt").toLowerCase();
             var detected = nav.indexOf("fr") === 0 ? "fr" : nav.indexOf("en") === 0 ? "en" : "pt";
             if (detected !== "pt") {
               localStorage.setItem("tkLang", detected);
-              var pathSansLang2 = path;
-              var target2 = "/" + detected + (pathSansLang2 === "/" ? "" : pathSansLang2);
-              window.location.replace(target2 + window.location.search + window.location.hash);
+              var target2 = resolveTargetForLang(detected);
+              if (target2) window.location.replace(target2);
             }
           }
         } catch (e) {

@@ -22,6 +22,8 @@ const faqUrl =
   lang === "pt" ? "/faq-trespasse" : lang === "fr" ? "/fr/faq-trespasse" : "/en/trespasse-faq";
 const marketUrl =
   lang === "pt" ? "/mercado-trespasse" : lang === "fr" ? "/fr/marche-trespasse" : "/en/trespasse-market";
+const casesUrl =
+  lang === "pt" ? "/casos-clientes" : lang === "fr" ? "/fr/cas-clients" : "/en/case-studies";
 ---
 
 <!-- HERO -->
@@ -273,6 +275,7 @@ const marketUrl =
           <li><a href={guideUrl} class="hover:text-white transition">{t("footer.navGuide")}</a></li>
           <li><a href={faqUrl} class="hover:text-white transition">{t("footer.navFaq")}</a></li>
           <li><a href={marketUrl} class="hover:text-white transition">{t("footer.navMarket")}</a></li>
+          <li><a href={casesUrl} class="hover:text-white transition">{t("footer.navCases")}</a></li>
           <li><a href="#about" class="hover:text-white transition">{t("footer.navAbout")}</a></li>
           <li><a href="#contact" class="hover:text-white transition">{t("footer.navContact")}</a></li>
         </ul>

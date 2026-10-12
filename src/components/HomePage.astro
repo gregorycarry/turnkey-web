@@ -45,6 +45,13 @@ const newListings = [
       { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "3 950 €" },
       { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: "12 500 €" },
     ],
+    mapQuery: "Amoreiras, Lisboa",
+    environment: [
+      tr("Zona mista escritórios/residencial", "Quartier mixte bureaux/résidentiel", "Mixed office/residential area"),
+      tr("Fluxo pedonal elevado", "Flux piéton important", "High foot traffic"),
+      tr("Próximo ao Centro Comercial Amoreiras", "À proximité du Centre Commercial Amoreiras", "Near Amoreiras Shopping Center"),
+      tr("Boa visibilidade de rua", "Bonne visibilité sur rue", "Good street visibility"),
+    ],
     strengths: [
       tr("Equipa de 7 pessoas pronta a continuar", "Équipe de 7 personnes prête à continuer", "7-person team ready to stay"),
       tr("Contrato de arrendamento estável há mais de 15 anos", "Bail stable depuis plus de 15 ans", "Stable lease for over 15 years"),
@@ -87,6 +94,7 @@ const newListings = [
 ];
 
 const labelFinancials = tr("Condições financeiras", "Conditions financières", "Financial conditions");
+const labelEnvironment = tr("Envolvente", "Environnement", "Surroundings");
 const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
 const labelReason = tr("Motivo", "Motif", "Reason");
 const labelRequestFile = tr("Pedir o dossier", "Demander le dossier", "Request the file");
@@ -230,6 +238,28 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
                       <span class="font-bold text-[var(--color-anthracite)]">{f.value}</span>
                     </div>
                   ))}
+                </div>
+              )}
+              {m.mapQuery && (
+                <div class="mb-4 rounded-md overflow-hidden border border-gray-100">
+                  <iframe
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(m.mapQuery)}&z=14&output=embed`}
+                    width="100%"
+                    height="160"
+                    style="border:0;"
+                    loading="lazy"
+                    title={m.zone}
+                  ></iframe>
+                </div>
+              )}
+              {m.environment && (
+                <div class="mb-4">
+                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelEnvironment}</p>
+                  <div class="flex flex-wrap gap-2">
+                    {m.environment.map((e) => (
+                      <span class="text-xs bg-blue-50 text-[var(--color-anthracite)] px-2 py-1 rounded">{e}</span>
+                    ))}
+                  </div>
                 </div>
               )}
               <div class="mb-4">

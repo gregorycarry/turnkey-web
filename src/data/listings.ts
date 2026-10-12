@@ -17,6 +17,7 @@ export interface Listing {
   kind: "trespasse" | "walls";
   category: "fb" | "commerce" | "atypical";
   price?: string;
+  description?: string;
   images?: ListingImage[];
   metrics: ListingMetric[];
   financials?: ListingMetric[];
@@ -56,6 +57,11 @@ export function getListings(lang: Lang): Listing[] {
       kind: "trespasse" as const,
       category: "commerce" as const,
       price: "250 000 €",
+      description: tr(
+        "Salão de cabeleireiro instalado há mais de 15 anos no eixo Amoreiras / Marquês de Pombal, uma zona que combina escritórios, residencial e forte fluxo pedonal. Os 240 m² distribuem-se por dois pisos: rés-do-chão com receção, postos de trabalho e lavatórios, e um piso dedicado a tratamentos com sala de spa/massagem. A equipa de 7 pessoas está pronta para continuar a atividade sem interrupção, com equipamento recente de marcas premium.",
+        "Salon de coiffure installé depuis plus de 15 ans sur l'axe Amoreiras / Marquês de Pombal, un quartier qui mêle bureaux, résidentiel et fort passage piéton. Les 240 m² se répartissent sur deux niveaux : rez-de-chaussée avec réception, postes de coiffure et bacs à shampoing, et un étage dédié aux soins avec salle de spa/massage. L'équipe de 7 personnes est en place et prête à poursuivre l'activité sans interruption, avec un équipement récent de marques premium.",
+        "Hair salon established for over 15 years on the Amoreiras / Marquês de Pombal axis, a district combining offices, residential and high foot traffic. The 240 sqm span two floors: ground floor with reception, styling stations and wash basins, and an upper floor dedicated to treatments with a spa/massage room. The 7-person team is in place and ready to continue operating without interruption, with recent premium-brand equipment."
+      ),
       images: [
         { src: "/listings/tk-2026-002/amoreiras.jpg", alt: tr("Zona das Amoreiras", "Quartier des Amoreiras", "Amoreiras area") },
         { src: "/listings/tk-2026-002/cover.jpg", alt: tr("Receção", "Réception", "Reception") },
@@ -86,6 +92,11 @@ export function getListings(lang: Lang): Listing[] {
         tr("Equipa de 7 pessoas pronta a continuar", "Équipe de 7 personnes prête à continuer", "7-person team ready to stay"),
         tr("Contrato de arrendamento estável há mais de 15 anos", "Bail stable depuis plus de 15 ans", "Stable lease for over 15 years"),
         tr("Pronto a funcionar, sem obras necessárias", "Clé en main, aucuns travaux nécessaires", "Turnkey, no renovation needed"),
+        tr("Equipamento premium incluído (Davines, Kevin Murphy)", "Équipement premium inclus (Davines, Kevin Murphy)", "Premium equipment included (Davines, Kevin Murphy)"),
+        tr("Sala de spa/massagem dedicada no 1º andar", "Salle de spa/massage dédiée à l'étage", "Dedicated spa/massage room on the upper floor"),
+        tr("Localização central, a 15 min a pé do Rato / Marquês de Pombal", "Emplacement central, à 15 min à pied du Rato / Marquês de Pombal", "Central location, 15-minute walk from Rato / Marquês de Pombal"),
+        tr("Certificado energético B", "Certificat énergétique B", "Energy rating B"),
+        tr("Clientela fidelizada ao longo de mais de 15 anos", "Clientèle fidélisée depuis plus de 15 ans", "Loyal clientele built over more than 15 years"),
       ],
       reason: tr("Transmissão de propriedade", "Transmission de propriété", "Ownership transition"),
     },
@@ -95,6 +106,11 @@ export function getListings(lang: Lang): Listing[] {
       zone: tr("Graça / Lisboa Centro", "Graça / Lisbonne Centre", "Graça / Central Lisbon"),
       kind: "trespasse" as const,
       category: "fb" as const,
+      description: tr(
+        "Restaurante com esplanadas no coração da Graça, um dos bairros mais vivos do centro histórico de Lisboa. Capacidade total de cerca de 90 lugares, distribuídos entre esplanada de rua, sala interior e jardim interior — uma combinação rara para este tipo de morada.",
+        "Restaurant avec terrasses au cœur de Graça, l'un des quartiers les plus vivants du centre historique de Lisbonne. Capacité totale d'environ 90 couverts, répartis entre terrasse de rue, salle intérieure et jardin intérieur — une combinaison rare pour ce type d'adresse.",
+        "Restaurant with terraces in the heart of Graça, one of the liveliest neighborhoods in Lisbon's historic center. Total capacity of about 90 seats, spread across a street terrace, an indoor room and an indoor garden — a rare combination for this kind of address."
+      ),
       metrics: [
         { label: tr("Capacidade total", "Capacité totale", "Total capacity"), value: tr("~90 lugares", "~90 places", "~90 seats") },
         { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
@@ -103,6 +119,8 @@ export function getListings(lang: Lang): Listing[] {
         tr("Esplanada de rua (10 lugares)", "Terrasse de rue (10 places)", "Street terrace (10 seats)"),
         tr("Sala interior 50 lugares", "Salle intérieure 50 places", "Indoor room 50 seats"),
         tr("Jardim interior 30 lugares", "Jardin intérieur 30 places", "Indoor garden 30 seats"),
+        tr("Localização central na Graça, grande visibilidade", "Emplacement central à Graça, forte visibilité", "Central Graça location, high visibility"),
+        tr("Três espaços distintos para modular a exploração", "Trois espaces distincts pour moduler l'exploitation", "Three distinct spaces to flex the operation"),
       ],
       reason: tr("Reorientação profissional", "Réorientation professionnelle", "Career change"),
     },
@@ -112,6 +130,11 @@ export function getListings(lang: Lang): Listing[] {
       zone: tr("Alcântara / Lisboa", "Alcântara / Lisbonne", "Alcântara / Lisbon"),
       kind: "walls" as const,
       category: "atypical" as const,
+      description: tr(
+        "Paredes comerciais de 80 m² em Alcântara, bairro lisboeta em plena revalorização. Um investimento imobiliário puro, sem exploração a retomar, com potencial de rendimento locativo interessante a médio prazo.",
+        "Murs commerciaux de 80 m² à Alcântara, quartier lisboète en pleine revalorisation. Un investissement immobilier pur, sans exploitation à reprendre, avec un potentiel de rendement locatif intéressant à moyen terme.",
+        "Commercial walls of 80 sqm in Alcântara, a Lisbon district undergoing strong revaluation. A pure real-estate investment with no business to take over, offering attractive medium-term rental yield potential."
+      ),
       metrics: [
         { label: tr("Área", "Surface", "Area"), value: "80 m²" },
         { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
@@ -120,6 +143,7 @@ export function getListings(lang: Lang): Listing[] {
         tr("Investimento imobiliário puro", "Investissement immobilier pur", "Pure real-estate investment"),
         tr("Rendimento locativo potencial", "Rendement locatif potentiel", "Rental yield potential"),
         tr("Zona em revalorização", "Quartier en revalorisation", "Area in revaluation"),
+        tr("Sem exploração a retomar, liberdade total de arrendatário", "Aucune exploitation à reprendre, liberté totale sur le locataire", "No business to take over, full freedom on tenant choice"),
       ],
       reason: tr("Venda proprietário", "Vente propriétaire", "Owner sale"),
     },

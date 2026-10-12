@@ -83,6 +83,10 @@ const labelBack = tr("Voltar aos mandatos", "Retour aux mandats", "Back to listi
           <p class="text-3xl font-black text-[var(--color-orange)] mb-6">{m.price}</p>
         )}
 
+        {m.description && (
+          <p class="text-[var(--color-anthracite)]/80 leading-relaxed mb-6">{m.description}</p>
+        )}
+
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6 py-6 border-y border-gray-100">
           {m.metrics.map((metric) => (
             <div>
@@ -144,12 +148,15 @@ const labelBack = tr("Voltar aos mandatos", "Retour aux mandats", "Back to listi
         )}
 
         <div class="mb-6">
-          <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelStrengths}</p>
-          <div class="flex flex-wrap gap-2">
+          <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-3">{labelStrengths}</p>
+          <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2">
             {m.strengths.map((s) => (
-              <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{s}</span>
+              <li class="flex items-start gap-2 text-sm text-[var(--color-anthracite)]">
+                <span class="text-[var(--color-orange)] font-bold mt-0.5">✓</span>
+                <span>{s}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-8">{labelReason} : {m.reason}</p>

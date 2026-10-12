@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ListingDetail from "../../components/ListingDetail.astro";
+import { getListings, listingDetailUrls } from "../../data/listings";
+
+export async function getStaticPaths() {
+  return getListings("pt").map((listing) => ({ params: { code: listing.code } }));
+}
+
+const { code } = Astro.params;
+const listing = getListings("pt").find((l) => l.code === code)!;
+const langUrls = listingDetailUrls(listing.code);
+const title = `${listing.type} — ${listing.zone} | TurnKey`;
+const description = `${listing.type} em ${listing.zone}. Mandato TurnKey, trespasse acompanhado por Grégory Vincent, IAD Portugal AMI 11220.`;
+---
+
+<BaseLayout lang="pt" title={title} description={description} langUrls={langUrls}>
+  <ListingDetail lang="pt" listing={listing} />
+</BaseLayout>

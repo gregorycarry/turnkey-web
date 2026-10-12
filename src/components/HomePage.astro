@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from "../i18n/utils";
 import type { Lang } from "../i18n/ui";
+import { getListings, listingDetailUrl } from "../data/listings";
 
 interface Props {
   lang: Lang;
@@ -8,6 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const listings = getListings(lang);
 
 // Build the About.p3 paragraph with inline strong tags
 const p3Template = t("about.p3");
@@ -25,97 +27,13 @@ const marketUrl =
 const casesUrl =
   lang === "pt" ? "/casos-clientes" : lang === "fr" ? "/fr/cas-clients" : "/en/case-studies";
 
-// Translation helper for inline multilingual content on mandate cards
+// Translation helper for inline multilingual content on cards
 const tr = (pt: string, fr: string, en: string) => (lang === "pt" ? pt : lang === "fr" ? fr : en);
 
-// Active mandates (featured listings) — translations inline so we don't bloat ui.ts
-const newListings = [
-  {
-    code: "TK-2026-002",
-    type: tr("Cabeleireiro / Salão", "Salon de coiffure", "Hair salon"),
-    zone: tr("Eixo Amoreiras / Marquês de Pombal", "Axe Amoreiras / Marquês de Pombal", "Amoreiras / Marquês de Pombal axis"),
-    kind: "trespasse" as const,
-    category: "commerce" as const,
-    price: "250 000 €",
-    images: [
-      { src: "/listings/tk-2026-002/amoreiras.jpg", alt: tr("Zona das Amoreiras", "Quartier des Amoreiras", "Amoreiras area") },
-      { src: "/listings/tk-2026-002/cover.jpg", alt: tr("Receção", "Réception", "Reception") },
-      { src: "/listings/tk-2026-002/stairs.jpg", alt: tr("Entrada e receção, dois pisos", "Entrée et réception, deux étages", "Entrance and reception, two floors") },
-      { src: "/listings/tk-2026-002/station.jpg", alt: tr("Posto de trabalho individual", "Poste de travail individuel", "Individual styling station") },
-      { src: "/listings/tk-2026-002/row.jpg", alt: tr("Sala de corte com luz natural", "Salle de coupe avec lumière naturelle", "Styling room with natural light") },
-      { src: "/listings/tk-2026-002/spa.jpg", alt: tr("Sala de tratamento / spa", "Salle de soin / spa", "Treatment / spa room") },
-      { src: "/listings/tk-2026-002/lounge.jpg", alt: tr("Espaço de espera", "Espace d'attente", "Waiting area") },
-    ],
-    metrics: [
-      { label: tr("Área (r/c + 1º andar)", "Surface (rdc + étage)", "Area (ground + 1st floor)"), value: "240 m² (90 m² + 150 m²)" },
-      { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("~400 000 €/ano", "~400 000 €/an", "~€400,000/year") },
-      { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: "B" },
-    ],
-    financials: [
-      { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "3 950 €" },
-      { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: "12 500 €" },
-    ],
-    mapQuery: "Amoreiras, Lisboa",
-    metro: tr("Rato / Marquês de Pombal (~15 min a pé)", "Rato / Marquês de Pombal (~15 min à pied)", "Rato / Marquês de Pombal (~15 min walk)"),
-    nearbyShops: tr("Comércio de proximidade: centro comercial, bancos, farmácias, restauração", "Commerces de proximité : centre commercial, banques, pharmacies, restauration", "Nearby amenities: shopping center, banks, pharmacies, restaurants"),
-    environment: [
-      tr("Zona de escritórios", "Quartier de bureaux", "Office area"),
-      tr("Zona residencial", "Quartier résidentiel", "Residential area"),
-      tr("Fluxo pedonal elevado", "Flux piéton important", "High foot traffic"),
-    ],
-    strengths: [
-      tr("Equipa de 7 pessoas pronta a continuar", "Équipe de 7 personnes prête à continuer", "7-person team ready to stay"),
-      tr("Contrato de arrendamento estável há mais de 15 anos", "Bail stable depuis plus de 15 ans", "Stable lease for over 15 years"),
-      tr("Pronto a funcionar, sem obras necessárias", "Clé en main, aucuns travaux nécessaires", "Turnkey, no renovation needed"),
-    ],
-    reason: tr("Transmissão de propriedade", "Transmission de propriété", "Ownership transition"),
-  },
-  {
-    code: "TK-2026-003",
-    type: tr("Restaurante com esplanadas", "Restaurant avec terrasses", "Restaurant with terraces"),
-    zone: tr("Graça / Lisboa Centro", "Graça / Lisbonne Centre", "Graça / Central Lisbon"),
-    kind: "trespasse" as const,
-    category: "fb" as const,
-    metrics: [
-      { label: tr("Capacidade total", "Capacité totale", "Total capacity"), value: tr("~90 lugares", "~90 places", "~90 seats") },
-      { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
-    ],
-    strengths: [
-      tr("Esplanada de rua (10 lugares)", "Terrasse de rue (10 places)", "Street terrace (10 seats)"),
-      tr("Sala interior 50 lugares", "Salle intérieure 50 places", "Indoor room 50 seats"),
-      tr("Jardim interior 30 lugares", "Jardin intérieur 30 places", "Indoor garden 30 seats"),
-    ],
-    reason: tr("Reorientação profissional", "Réorientation professionnelle", "Career change"),
-  },
-  {
-    code: "TK-2026-004",
-    type: tr("Paredes comerciais (loja)", "Murs commerciaux (local)", "Commercial walls (unit)"),
-    zone: tr("Alcântara / Lisboa", "Alcântara / Lisbonne", "Alcântara / Lisbon"),
-    kind: "walls" as const,
-    category: "atypical" as const,
-    metrics: [
-      { label: tr("Área", "Surface", "Area"), value: "80 m²" },
-      { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
-    ],
-    strengths: [
-      tr("Investimento imobiliário puro", "Investissement immobilier pur", "Pure real-estate investment"),
-      tr("Rendimento locativo potencial", "Rendement locatif potentiel", "Rental yield potential"),
-      tr("Zona em revalorização", "Quartier en revalorisation", "Area in revaluation"),
-    ],
-    reason: tr("Venda proprietário", "Vente propriétaire", "Owner sale"),
-  },
-];
-
-const labelFinancials = tr("Condições financeiras", "Conditions financières", "Financial conditions");
-const labelEnvironment = tr("Envolvente", "Environnement", "Surroundings");
-const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
-const labelMoreDetails = tr("Ver todos os detalhes", "Voir tous les détails", "See full details");
-const labelPhotos = tr("Fotos", "Photos", "Photos");
-const labelReason = tr("Motivo", "Motif", "Reason");
-const labelRequestFile = tr("Pedir o dossier", "Demander le dossier", "Request the file");
 const labelBadgeNew = tr("NOVO", "NOUVEAU", "NEW");
 const labelBadgeWalls = tr("MUROS / INVEST.", "MURS / INVEST.", "WALLS / INVEST.");
 const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
+const labelViewDetails = tr("Ver detalhes", "Voir les détails", "View details");
 ---
 
 <!-- HERO -->
@@ -177,9 +95,9 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
+<div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:mx-0 md:px-0">
 
-      <article class="bg-white rounded-lg overflow-hidden shadow-sm transition relative" data-category="fb">
+      <article class="bg-white rounded-lg overflow-hidden shadow-sm transition relative w-[320px] sm:w-[360px] flex-shrink-0 snap-start" data-category="fb">
         <div class="absolute top-4 left-4 z-10 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           {t("featured.badgeSold")}
@@ -208,7 +126,7 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
         </div>
       </article>
 
-      {newListings.map((m) => {
+      {listings.map((m) => {
         const isWalls = m.kind === "walls";
         const badgeLabel = isWalls ? labelBadgeWalls : labelBadgeNew;
         const badgeBg = isWalls ? "bg-[var(--color-gold)]" : "bg-[var(--color-orange)]";
@@ -216,125 +134,49 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
           ? "from-[var(--color-anthracite)] to-[var(--color-gold)]/60"
           : "from-[var(--color-anthracite)] to-[var(--color-orange)]/60";
         return (
-          <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition relative" data-category={m.category}>
-            <div class={`absolute top-4 left-4 z-10 ${badgeBg} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5`}>
-              {isWalls ? (
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2h-4v-7h-6v7H5a2 2 0 01-2-2V10z"/></svg>
-              ) : (
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-              )}
-              {badgeLabel}
-            </div>
-            {m.images && m.images.length > 0 ? (
-              <div class="h-48 overflow-hidden relative cursor-pointer group/carousel" data-carousel>
-                {m.images.map((img, i) => (
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-                    style={`opacity:${i === 0 ? 1 : 0}`}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    data-slide
-                  />
-                ))}
-                <div class="absolute inset-0 bg-black/0 group-hover/carousel:bg-black/20 transition flex items-center justify-center">
-                  <span class="opacity-0 group-hover/carousel:opacity-100 transition text-white text-xs font-semibold bg-black/50 px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
-                    {labelPhotos} ({m.images.length})
-                  </span>
-                </div>
+          <a href={listingDetailUrl(lang, m.code)} class="block w-[320px] sm:w-[360px] flex-shrink-0 snap-start group" data-category={m.category}>
+            <article class="bg-white rounded-lg overflow-hidden shadow-sm group-hover:shadow-xl transition relative h-full">
+              <div class={`absolute top-4 left-4 z-10 ${badgeBg} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5`}>
+                {isWalls ? (
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2h-4v-7h-6v7H5a2 2 0 01-2-2V10z"/></svg>
+                ) : (
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                )}
+                {badgeLabel}
               </div>
-            ) : (
-              <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
-            )}
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
-                <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
-              </div>
-              <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
-              <p class="text-sm text-[var(--color-anthracite)]/60 mb-3">{m.zone}</p>
-              {m.price && (
-                <p class="text-2xl font-black text-[var(--color-orange)] mb-4">{m.price}</p>
-              )}
-
-              <details class="group/details mb-4">
-                <summary class="cursor-pointer list-none flex items-center justify-between py-2 border-y border-gray-100 text-sm font-semibold text-[var(--color-anthracite)]">
-                  {labelMoreDetails}
-                  <svg class="w-4 h-4 transition group-open/details:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-                </summary>
-
-                <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-b border-gray-100">
-                  {m.metrics.map((metric) => (
-                    <div>
-                      <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{metric.label}</p>
-                      <p class="text-sm font-bold text-[var(--color-anthracite)]">{metric.value}</p>
-                    </div>
+              {m.images && m.images.length > 0 ? (
+                <div class="h-48 overflow-hidden relative" data-carousel>
+                  {m.images.map((img, i) => (
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 group-hover:scale-105 transition-transform"
+                      style={`opacity:${i === 0 ? 1 : 0}`}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      data-slide
+                    />
                   ))}
                 </div>
-                {m.images && (
-                  <div class="mb-4">
-                    <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelPhotos}</p>
-                    <div class="grid grid-cols-3 gap-2">
-                      {m.images.map((photo) => (
-                        <a href={photo.src} target="_blank" rel="noopener" class="block aspect-square rounded-md overflow-hidden">
-                          <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover hover:scale-105 transition" loading="lazy" />
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {m.financials && (
-                  <div class="mb-4 bg-[var(--color-cream)] rounded-md px-4 py-3">
-                    <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelFinancials}</p>
-                    {m.financials.map((f) => (
-                      <div class="flex items-center justify-between py-1 text-sm">
-                        <span class="text-[var(--color-anthracite)]/70">{f.label}</span>
-                        <span class="font-bold text-[var(--color-anthracite)]">{f.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {m.mapQuery && (
-                  <div class="mb-4 rounded-md overflow-hidden border border-gray-100">
-                    <iframe
-                      src={`https://maps.google.com/maps?q=${encodeURIComponent(m.mapQuery)}&z=13&output=embed`}
-                      width="100%"
-                      height="160"
-                      style="border:0;"
-                      loading="lazy"
-                      title={m.zone}
-                    ></iframe>
-                  </div>
-                )}
-                {m.environment && (
-                  <div class="mb-4">
-                    <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelEnvironment}</p>
-                    {m.metro && <p class="text-sm text-[var(--color-anthracite)]/80 mb-1">🚇 {m.metro}</p>}
-                    {m.nearbyShops && <p class="text-sm text-[var(--color-anthracite)]/80 mb-2">{m.nearbyShops}</p>}
-                    <div class="flex flex-wrap gap-2">
-                      {m.environment.map((e) => (
-                        <span class="text-xs bg-blue-50 text-[var(--color-anthracite)] px-2 py-1 rounded">{e}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                <div class="mb-4">
-                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelStrengths}</p>
-                  <div class="flex flex-wrap gap-2">
-                    {m.strengths.map((s) => (
-                      <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{s}</span>
-                    ))}
-                  </div>
+              ) : (
+                <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
+              )}
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
+                  <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
                 </div>
-                <p class="text-xs text-[var(--color-anthracite)]/60 italic">{labelReason} : {m.reason}</p>
-              </details>
-
-              <button type="button" data-modal="buyer" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
-                {labelRequestFile}
-              </button>
-            </div>
-          </article>
+                <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
+                <p class="text-sm text-[var(--color-anthracite)]/60 mb-3">{m.zone}</p>
+                {m.price && (
+                  <p class="text-2xl font-black text-[var(--color-orange)] mb-4">{m.price}</p>
+                )}
+                <span class="flex items-center justify-between text-sm font-semibold text-[var(--color-anthracite)] py-3 border-t border-gray-100">
+                  {labelViewDetails}
+                  <svg class="w-4 h-4 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </article>
+          </a>
         );
       })}
 
@@ -581,34 +423,6 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
   </div>
 </div>
 
-<div id="modal-lightbox" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
-  <div class="modal-backdrop absolute inset-0 bg-black/90"></div>
-  <button type="button" data-close aria-label={t("modal.close")} class="absolute top-4 right-5 text-white/80 hover:text-white text-4xl leading-none z-10">×</button>
-  <button type="button" data-lightbox-prev aria-label="Previous" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl leading-none z-10 px-2 select-none">‹</button>
-  <button type="button" data-lightbox-next aria-label="Next" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl leading-none z-10 px-2 select-none">›</button>
-  <div class="relative max-w-5xl w-full max-h-[85vh] flex flex-col items-center">
-    <img data-lightbox-img src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-md" />
-    <p data-lightbox-counter class="text-white/70 text-sm mt-3"></p>
-  </div>
-</div>
-
-<script>
-  (function(){
-    function open(id: string){closeAll();var m=document.getElementById('modal-'+id);if(m){m.classList.remove('hidden');document.body.style.overflow='hidden';}}
-    function closeAll(){document.querySelectorAll('[id^="modal-"]').forEach(function(m){m.classList.add('hidden');});document.body.style.overflow='';}
-    document.addEventListener('click',function(e){
-      var target = e.target as HTMLElement;
-      var o = target.closest('[data-modal]') as HTMLElement | null;
-      if(o){e.preventDefault();open(o.dataset.modal!);return;}
-      var c = target.closest('[data-close]') || (target.classList && target.classList.contains('modal-backdrop')?target:null);
-      if(c){e.preventDefault();closeAll();return;}
-      var cl = target.closest('a[href="#contact"]');
-      if(cl){e.preventDefault();open('choice');}
-    });
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
-  })();
-</script>
-
 <script>
   (function(){
     var activeFilter: string | null = null;
@@ -640,72 +454,6 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
         var section = document.getElementById('properties');
         if (section) section.scrollIntoView({ behavior: 'smooth' });
       }
-    });
-  })();
-</script>
-
-<script>
-  (function(){
-    document.querySelectorAll('[data-carousel]').forEach(function(car){
-      var slides = car.querySelectorAll('[data-slide]') as NodeListOf<HTMLElement>;
-      if (slides.length <= 1) return;
-      var idx = 0;
-      setInterval(function(){
-        slides[idx].style.opacity = '0';
-        idx = (idx + 1) % slides.length;
-        slides[idx].style.opacity = '1';
-      }, 3500);
-    });
-
-    var lb = document.getElementById('modal-lightbox');
-    var lbImg = lb ? (lb.querySelector('[data-lightbox-img]') as HTMLImageElement | null) : null;
-    var lbCounter = lb ? lb.querySelector('[data-lightbox-counter]') : null;
-    var lbImages: { src: string; alt: string }[] = [];
-    var lbIndex = 0;
-
-    function showLightboxImage(){
-      if (!lbImg || !lbImages[lbIndex]) return;
-      lbImg.src = lbImages[lbIndex].src;
-      lbImg.alt = lbImages[lbIndex].alt;
-      if (lbCounter) lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
-    }
-
-    function openLightbox(images: { src: string; alt: string }[], startIndex: number){
-      if (!lb) return;
-      lbImages = images;
-      lbIndex = startIndex;
-      showLightboxImage();
-      document.querySelectorAll('[id^="modal-"]').forEach(function(m){ m.classList.add('hidden'); });
-      lb.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    document.addEventListener('click', function(e){
-      var target = e.target as HTMLElement;
-      var car = target.closest('[data-carousel]') as HTMLElement | null;
-      if (car) {
-        var slides = car.querySelectorAll('[data-slide]') as NodeListOf<HTMLImageElement>;
-        if (slides.length === 0) return;
-        var images = Array.prototype.map.call(slides, function(s: HTMLImageElement){ return { src: s.src, alt: s.alt }; });
-        openLightbox(images, 0);
-        return;
-      }
-      if (target.closest('[data-lightbox-prev]')) {
-        lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
-        showLightboxImage();
-        return;
-      }
-      if (target.closest('[data-lightbox-next]')) {
-        lbIndex = (lbIndex + 1) % lbImages.length;
-        showLightboxImage();
-        return;
-      }
-    });
-
-    document.addEventListener('keydown', function(e){
-      if (!lb || lb.classList.contains('hidden')) return;
-      if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLightboxImage(); }
-      if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; showLightboxImage(); }
     });
   })();
 </script>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ListingDetail from "../../../components/ListingDetail.astro";
+import { getListings, listingDetailUrls } from "../../../data/listings";
+
+export async function getStaticPaths() {
+  return getListings("en").map((listing) => ({ params: { code: listing.code } }));
+}
+
+const { code } = Astro.params;
+const listing = getListings("en").find((l) => l.code === code)!;
+const langUrls = listingDetailUrls(listing.code);
+const title = `${listing.type} — ${listing.zone} | TurnKey`;
+const description = `${listing.type} in ${listing.zone}. TurnKey listing, trespasse handled by Grégory Vincent, IAD Portugal AMI 11220.`;
+---
+
+<BaseLayout lang="en" title={title} description={description} langUrls={langUrls}>
+  <ListingDetail lang="en" listing={listing} />
+</BaseLayout>

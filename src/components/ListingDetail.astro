@@ -1,0 +1,187 @@
+---
+import { useTranslations } from "../i18n/utils";
+import type { Lang } from "../i18n/ui";
+import type { Listing } from "../data/listings";
+
+interface Props {
+  lang: Lang;
+  listing: Listing;
+}
+
+const { lang, listing: m } = Astro.props;
+const t = useTranslations(lang);
+const tr = (pt: string, fr: string, en: string) => (lang === "pt" ? pt : lang === "fr" ? fr : en);
+
+const isWalls = m.kind === "walls";
+const badgeLabel = isWalls ? tr("MUROS / INVEST.", "MURS / INVEST.", "WALLS / INVEST.") : tr("NOVO", "NOUVEAU", "NEW");
+const badgeBg = isWalls ? "bg-[var(--color-gold)]" : "bg-[var(--color-orange)]";
+const headerGradient = isWalls
+  ? "from-[var(--color-anthracite)] to-[var(--color-gold)]/60"
+  : "from-[var(--color-anthracite)] to-[var(--color-orange)]/60";
+
+const backUrl = (lang === "pt" ? "/" : `/${lang}`) + "#properties";
+
+const labelFinancials = tr("Condições financeiras", "Conditions financières", "Financial conditions");
+const labelEnvironment = tr("Envolvente", "Environnement", "Surroundings");
+const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
+const labelPhotos = tr("Fotos", "Photos", "Photos");
+const labelReason = tr("Motivo", "Motif", "Reason");
+const labelRequestFile = tr("Pedir o dossier", "Demander le dossier", "Request the file");
+const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
+const labelBack = tr("Voltar aos mandatos", "Retour aux mandats", "Back to listings");
+---
+
+<section class="py-16 px-6 bg-[var(--color-cream)]">
+  <div class="max-w-4xl mx-auto">
+    <a href={backUrl} class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-anthracite)]/70 hover:text-[var(--color-orange)] transition mb-6">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      {labelBack}
+    </a>
+
+    <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+      <div class="relative">
+        {m.images && m.images.length > 0 ? (
+          <div class="h-72 sm:h-96 overflow-hidden relative cursor-pointer group/carousel" data-carousel data-lightbox>
+            {m.images.map((img, i) => (
+              <img
+                src={img.src}
+                alt={img.alt}
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                style={`opacity:${i === 0 ? 1 : 0}`}
+                loading={i === 0 ? "eager" : "lazy"}
+                data-slide
+              />
+            ))}
+            <div class="absolute inset-0 bg-black/0 group-hover/carousel:bg-black/20 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover/carousel:opacity-100 transition text-white text-xs font-semibold bg-black/50 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+                {labelPhotos} ({m.images.length})
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div class={`h-72 sm:h-96 bg-gradient-to-br ${headerGradient}`}></div>
+        )}
+        <div class={`absolute top-4 left-4 z-10 ${badgeBg} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5`}>
+          {isWalls ? (
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2h-4v-7h-6v7H5a2 2 0 01-2-2V10z"/></svg>
+          ) : (
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+          )}
+          {badgeLabel}
+        </div>
+      </div>
+
+      <div class="p-6 md:p-10">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
+          <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h1>
+        <p class="text-[var(--color-anthracite)]/60 mb-4">{m.zone}</p>
+        {m.price && (
+          <p class="text-3xl font-black text-[var(--color-orange)] mb-6">{m.price}</p>
+        )}
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6 py-6 border-y border-gray-100">
+          {m.metrics.map((metric) => (
+            <div>
+              <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{metric.label}</p>
+              <p class="text-base font-bold text-[var(--color-anthracite)]">{metric.value}</p>
+            </div>
+          ))}
+        </div>
+
+        {m.images && m.images.length > 1 && (
+          <div class="mb-6">
+            <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelPhotos}</p>
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              {m.images.map((photo) => (
+                <a href={photo.src} target="_blank" rel="noopener" class="block aspect-square rounded-md overflow-hidden">
+                  <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover hover:scale-105 transition" loading="lazy" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {m.financials && (
+          <div class="mb-6 bg-[var(--color-cream)] rounded-md px-5 py-4">
+            <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelFinancials}</p>
+            {m.financials.map((f) => (
+              <div class="flex items-center justify-between py-1.5 text-sm">
+                <span class="text-[var(--color-anthracite)]/70">{f.label}</span>
+                <span class="font-bold text-[var(--color-anthracite)]">{f.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {m.mapQuery && (
+          <div class="mb-6 rounded-md overflow-hidden border border-gray-100">
+            <iframe
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(m.mapQuery)}&z=13&output=embed`}
+              width="100%"
+              height="260"
+              style="border:0;"
+              loading="lazy"
+              title={m.zone}
+            ></iframe>
+          </div>
+        )}
+
+        {m.environment && (
+          <div class="mb-6">
+            <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelEnvironment}</p>
+            {m.metro && <p class="text-sm text-[var(--color-anthracite)]/80 mb-1">🚇 {m.metro}</p>}
+            {m.nearbyShops && <p class="text-sm text-[var(--color-anthracite)]/80 mb-2">{m.nearbyShops}</p>}
+            <div class="flex flex-wrap gap-2">
+              {m.environment.map((e) => (
+                <span class="text-xs bg-blue-50 text-[var(--color-anthracite)] px-2 py-1 rounded">{e}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="mb-6">
+          <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelStrengths}</p>
+          <div class="flex flex-wrap gap-2">
+            {m.strengths.map((s) => (
+              <span class="text-xs bg-[var(--color-cream)] text-[var(--color-anthracite)] px-2 py-1 rounded">{s}</span>
+            ))}
+          </div>
+        </div>
+
+        <p class="text-xs text-[var(--color-anthracite)]/60 italic mb-8">{labelReason} : {m.reason}</p>
+
+        <button type="button" data-modal="buyer-listing" class="block text-center w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+          {labelRequestFile}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="modal-buyer-listing" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <button type="button" data-close aria-label={t("modal.close")} class="absolute top-3 right-4 text-gray-400 hover:text-[var(--color-anthracite)] text-3xl leading-none z-10">×</button>
+    <div class="p-8 md:p-10 border-t-4 border-[var(--color-anthracite)] rounded-t-lg">
+      <h3 class="text-2xl font-bold text-[var(--color-anthracite)] mb-2">{t("modal.buyerTitle")}</h3>
+      <p class="text-sm text-[var(--color-anthracite)]/70 mb-6">{m.code} — {m.type}, {m.zone}</p>
+      <form action="https://formspree.io/f/xqpanyow" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value={`${t("modal.subjectBuyer")} — ${m.code}`} />
+        <input type="hidden" name="_lang" value={lang} />
+        <input type="hidden" name="mandato" value={`${m.code} — ${m.type}, ${m.zone}`} />
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.fullNameLabel")}</label><input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.emailLabel")}</label><input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+          <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.phoneLabel")}</label><input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)]" /></div>
+        </div>
+        <div><label class="block text-xs font-semibold text-[var(--color-anthracite)]/70 uppercase tracking-wider mb-1">{t("modal.profileLabel")}</label><select name="profil" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[var(--color-anthracite)] bg-white"><option value="">{t("modal.selectPlaceholder")}</option><option>{t("modal.profileOpt1")}</option><option>{t("modal.profileOpt2")}</option><option>{t("modal.profileOpt3")}</option><option>{t("modal.profileOpt4")}</option><option>{t("modal.profileOpt5")}</option></select></div>
+        <button type="submit" class="w-full bg-[var(--color-anthracite)] text-white py-4 rounded-md font-semibold hover:opacity-90 transition">{t("modal.submitBuyer")}</button>
+        <p class="text-xs text-[var(--color-anthracite)]/60 text-center">{t("modal.buyerNote")}</p>
+      </form>
+    </div>
+  </div>
+</div>

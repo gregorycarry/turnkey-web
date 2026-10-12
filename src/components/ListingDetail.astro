@@ -21,6 +21,7 @@ const headerGradient = isWalls
 
 const backUrl = (lang === "pt" ? "/" : `/${lang}`) + "#properties";
 
+const labelDescription = tr("Apresentação", "Présentation", "Overview");
 const labelFinancials = tr("Condições financeiras", "Conditions financières", "Financial conditions");
 const labelEnvironment = tr("Envolvente", "Environnement", "Surroundings");
 const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
@@ -84,7 +85,10 @@ const labelBack = tr("Voltar aos mandatos", "Retour aux mandats", "Back to listi
         )}
 
         {m.description && (
-          <p class="text-[var(--color-anthracite)]/80 leading-relaxed mb-6">{m.description}</p>
+          <div class="mb-6">
+            <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelDescription}</p>
+            <p class="text-[var(--color-anthracite)]/80 leading-relaxed">{m.description}</p>
+          </div>
         )}
 
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6 py-6 border-y border-gray-100">

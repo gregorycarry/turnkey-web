@@ -37,6 +37,14 @@ const newListings = [
     kind: "trespasse" as const,
     category: "commerce" as const,
     price: "250 000 €",
+    cover: "/listings/tk-2026-002/cover.jpg",
+    gallery: [
+      { src: "/listings/tk-2026-002/stairs.jpg", alt: tr("Entrada e receção, dois pisos", "Entrée et réception, deux étages", "Entrance and reception, two floors") },
+      { src: "/listings/tk-2026-002/station.jpg", alt: tr("Posto de trabalho individual", "Poste de travail individuel", "Individual styling station") },
+      { src: "/listings/tk-2026-002/row.jpg", alt: tr("Sala de corte com luz natural", "Salle de coupe avec lumière naturelle", "Styling room with natural light") },
+      { src: "/listings/tk-2026-002/spa.jpg", alt: tr("Sala de tratamento / spa", "Salle de soin / spa", "Treatment / spa room") },
+      { src: "/listings/tk-2026-002/lounge.jpg", alt: tr("Espaço de espera", "Espace d'attente", "Waiting area") },
+    ],
     metrics: [
       { label: tr("Área (r/c + 1º andar)", "Surface (rdc + étage)", "Area (ground + 1st floor)"), value: "240 m² (90 m² + 150 m²)" },
       { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("~400 000 €/ano", "~400 000 €/an", "~€400,000/year") },
@@ -101,6 +109,7 @@ const labelFinancials = tr("Condições financeiras", "Conditions financières",
 const labelEnvironment = tr("Envolvente", "Environnement", "Surroundings");
 const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
 const labelMoreDetails = tr("Ver todos os detalhes", "Voir tous les détails", "See full details");
+const labelPhotos = tr("Fotos", "Photos", "Photos");
 const labelReason = tr("Motivo", "Motif", "Reason");
 const labelRequestFile = tr("Pedir o dossier", "Demander le dossier", "Request the file");
 const labelBadgeNew = tr("NOVO", "NOUVEAU", "NEW");
@@ -215,7 +224,13 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
               )}
               {badgeLabel}
             </div>
-            <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
+            {m.cover ? (
+              <div class="h-48 overflow-hidden">
+                <img src={m.cover} alt={m.type} class="w-full h-full object-cover" loading="lazy" />
+              </div>
+            ) : (
+              <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
+            )}
             <div class="p-6">
               <div class="flex items-center justify-between mb-3">
                 <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
@@ -241,6 +256,18 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
                     </div>
                   ))}
                 </div>
+                {m.gallery && (
+                  <div class="mb-4">
+                    <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelPhotos}</p>
+                    <div class="grid grid-cols-3 gap-2">
+                      {m.gallery.map((photo) => (
+                        <a href={photo.src} target="_blank" rel="noopener" class="block aspect-square rounded-md overflow-hidden">
+                          <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover hover:scale-105 transition" loading="lazy" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {m.financials && (
                   <div class="mb-4 bg-[var(--color-cream)] rounded-md px-4 py-3">
                     <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelFinancials}</p>

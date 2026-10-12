@@ -95,32 +95,34 @@ const labelViewDetails = tr("Ver detalhes", "Voir les détails", "View details")
       </p>
     </div>
 
-<div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:mx-0 md:px-0">
+<div class="flex flex-col gap-5">
 
-      <article class="bg-white rounded-lg overflow-hidden shadow-sm transition relative w-[320px] sm:w-[360px] flex-shrink-0 snap-start" data-category="fb">
+      <article class="bg-white rounded-lg overflow-hidden shadow-sm transition relative flex flex-col sm:flex-row" data-category="fb">
         <div class="absolute top-4 left-4 z-10 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           {t("featured.badgeSold")}
         </div>
-        <div class="h-48 bg-gradient-to-br from-[var(--color-anthracite)] to-[var(--color-orange)]/60 relative">
+        <div class="h-48 sm:h-auto sm:w-72 md:w-80 flex-shrink-0 bg-gradient-to-br from-[var(--color-anthracite)] to-[var(--color-orange)]/60 relative">
           <div class="absolute inset-0 bg-black/40"></div>
           <div class="absolute inset-0 flex items-center justify-center">
-            <span class="[font-family:'Playfair_Display',serif] text-white text-5xl md:text-6xl font-black tracking-wide opacity-90 rotate-[-8deg] drop-shadow-lg">{t("featured.badgeSold")}</span>
+            <span class="[font-family:'Playfair_Display',serif] text-white text-4xl md:text-5xl font-black tracking-wide opacity-90 rotate-[-8deg] drop-shadow-lg">{t("featured.badgeSold")}</span>
           </div>
         </div>
-        <div class="p-6 opacity-80">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">TK-2026-001</span>
-            <span class="text-xs font-semibold bg-emerald-600/10 text-emerald-700 px-2 py-1 rounded">{t("featured.forSale")}</span>
+        <div class="p-6 opacity-80 flex-1 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">TK-2026-001</span>
+              <span class="text-xs font-semibold bg-emerald-600/10 text-emerald-700 px-2 py-1 rounded">{t("featured.forSale")}</span>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1 line-through decoration-2 decoration-[var(--color-anthracite)]/30">{t("featured.mandateType")}</h3>
+            <p class="text-sm text-[var(--color-anthracite)]/60 mb-2">{t("featured.mandateZone")}</p>
+            <p class="text-sm text-[var(--color-anthracite)]/80 italic">{t("featured.soldNote")}</p>
           </div>
-          <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1 line-through decoration-2 decoration-[var(--color-anthracite)]/30">{t("featured.mandateType")}</h3>
-          <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">{t("featured.mandateZone")}</p>
-          <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
+          <div class="flex sm:flex-col gap-6 sm:gap-2 sm:w-44 sm:border-l sm:border-gray-100 sm:pl-6">
             <div><p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{t("featured.price")}</p><p class="text-sm font-bold text-[var(--color-anthracite)]/70">100–150 k€</p></div>
             <div><p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{t("featured.turnover")}</p><p class="text-sm font-bold text-[var(--color-anthracite)]/70">250–290 k€</p></div>
           </div>
-          <p class="text-sm text-[var(--color-anthracite)]/80 italic mb-2">{t("featured.soldNote")}</p>
-          <button type="button" data-modal="buyer" class="block text-center w-full mt-4 bg-[var(--color-anthracite)] text-white py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
+          <button type="button" data-modal="buyer" class="shrink-0 text-center bg-[var(--color-anthracite)] text-white px-5 py-3 rounded-md font-semibold hover:bg-[var(--color-orange)] transition">
             {t("featured.joinBase")}
           </button>
         </div>
@@ -134,8 +136,8 @@ const labelViewDetails = tr("Ver detalhes", "Voir les détails", "View details")
           ? "from-[var(--color-anthracite)] to-[var(--color-gold)]/60"
           : "from-[var(--color-anthracite)] to-[var(--color-orange)]/60";
         return (
-          <a href={listingDetailUrl(lang, m.code)} class="block w-[320px] sm:w-[360px] flex-shrink-0 snap-start group" data-category={m.category}>
-            <article class="bg-white rounded-lg overflow-hidden shadow-sm group-hover:shadow-xl transition relative h-full">
+          <a href={listingDetailUrl(lang, m.code)} class="block group" data-category={m.category}>
+            <article class="bg-white rounded-lg overflow-hidden shadow-sm group-hover:shadow-xl transition relative flex flex-col sm:flex-row">
               <div class={`absolute top-4 left-4 z-10 ${badgeBg} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5`}>
                 {isWalls ? (
                   <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2h-4v-7h-6v7H5a2 2 0 01-2-2V10z"/></svg>
@@ -145,7 +147,7 @@ const labelViewDetails = tr("Ver detalhes", "Voir les détails", "View details")
                 {badgeLabel}
               </div>
               {m.images && m.images.length > 0 ? (
-                <div class="h-48 overflow-hidden relative" data-carousel>
+                <div class="h-48 sm:h-auto sm:w-72 md:w-80 flex-shrink-0 overflow-hidden relative" data-carousel>
                   {m.images.map((img, i) => (
                     <img
                       src={img.src}
@@ -158,19 +160,24 @@ const labelViewDetails = tr("Ver detalhes", "Voir les détails", "View details")
                   ))}
                 </div>
               ) : (
-                <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
+                <div class={`h-48 sm:h-auto sm:w-72 md:w-80 flex-shrink-0 bg-gradient-to-br ${headerGradient}`}></div>
               )}
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
-                  <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
+              <div class="p-6 flex-1 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-xs font-mono font-semibold text-[var(--color-anthracite)]/60">{m.code}</span>
+                    <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
+                  <p class="text-sm text-[var(--color-anthracite)]/60">{m.zone}</p>
                 </div>
-                <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
-                <p class="text-sm text-[var(--color-anthracite)]/60 mb-3">{m.zone}</p>
                 {m.price && (
-                  <p class="text-2xl font-black text-[var(--color-orange)] mb-4">{m.price}</p>
+                  <div class="sm:w-44 sm:border-l sm:border-gray-100 sm:pl-6">
+                    <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider">{t("featured.price")}</p>
+                    <p class="text-2xl font-black text-[var(--color-orange)]">{m.price}</p>
+                  </div>
                 )}
-                <span class="flex items-center justify-between text-sm font-semibold text-[var(--color-anthracite)] py-3 border-t border-gray-100">
+                <span class="shrink-0 flex items-center gap-2 text-sm font-semibold text-[var(--color-anthracite)]">
                   {labelViewDetails}
                   <svg class="w-4 h-4 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </span>

@@ -226,7 +226,7 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
               {badgeLabel}
             </div>
             {m.images && m.images.length > 0 ? (
-              <div class="h-48 overflow-hidden relative" data-carousel>
+              <div class="h-48 overflow-hidden relative cursor-pointer group/carousel" data-carousel>
                 {m.images.map((img, i) => (
                   <img
                     src={img.src}
@@ -237,6 +237,12 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
                     data-slide
                   />
                 ))}
+                <div class="absolute inset-0 bg-black/0 group-hover/carousel:bg-black/20 transition flex items-center justify-center">
+                  <span class="opacity-0 group-hover/carousel:opacity-100 transition text-white text-xs font-semibold bg-black/50 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+                    {labelPhotos} ({m.images.length})
+                  </span>
+                </div>
               </div>
             ) : (
               <div class={`h-48 bg-gradient-to-br ${headerGradient}`}></div>
@@ -575,6 +581,17 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
   </div>
 </div>
 
+<div id="modal-lightbox" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="modal-backdrop absolute inset-0 bg-black/90"></div>
+  <button type="button" data-close aria-label={t("modal.close")} class="absolute top-4 right-5 text-white/80 hover:text-white text-4xl leading-none z-10">×</button>
+  <button type="button" data-lightbox-prev aria-label="Previous" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl leading-none z-10 px-2 select-none">‹</button>
+  <button type="button" data-lightbox-next aria-label="Next" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl leading-none z-10 px-2 select-none">›</button>
+  <div class="relative max-w-5xl w-full max-h-[85vh] flex flex-col items-center">
+    <img data-lightbox-img src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-md" />
+    <p data-lightbox-counter class="text-white/70 text-sm mt-3"></p>
+  </div>
+</div>
+
 <script>
   (function(){
     function open(id: string){closeAll();var m=document.getElementById('modal-'+id);if(m){m.classList.remove('hidden');document.body.style.overflow='hidden';}}
@@ -638,6 +655,57 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
         idx = (idx + 1) % slides.length;
         slides[idx].style.opacity = '1';
       }, 3500);
+    });
+
+    var lb = document.getElementById('modal-lightbox');
+    var lbImg = lb ? (lb.querySelector('[data-lightbox-img]') as HTMLImageElement | null) : null;
+    var lbCounter = lb ? lb.querySelector('[data-lightbox-counter]') : null;
+    var lbImages: { src: string; alt: string }[] = [];
+    var lbIndex = 0;
+
+    function showLightboxImage(){
+      if (!lbImg || !lbImages[lbIndex]) return;
+      lbImg.src = lbImages[lbIndex].src;
+      lbImg.alt = lbImages[lbIndex].alt;
+      if (lbCounter) lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
+    }
+
+    function openLightbox(images: { src: string; alt: string }[], startIndex: number){
+      if (!lb) return;
+      lbImages = images;
+      lbIndex = startIndex;
+      showLightboxImage();
+      document.querySelectorAll('[id^="modal-"]').forEach(function(m){ m.classList.add('hidden'); });
+      lb.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.addEventListener('click', function(e){
+      var target = e.target as HTMLElement;
+      var car = target.closest('[data-carousel]') as HTMLElement | null;
+      if (car) {
+        var slides = car.querySelectorAll('[data-slide]') as NodeListOf<HTMLImageElement>;
+        if (slides.length === 0) return;
+        var images = Array.prototype.map.call(slides, function(s: HTMLImageElement){ return { src: s.src, alt: s.alt }; });
+        openLightbox(images, 0);
+        return;
+      }
+      if (target.closest('[data-lightbox-prev]')) {
+        lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+        showLightboxImage();
+        return;
+      }
+      if (target.closest('[data-lightbox-next]')) {
+        lbIndex = (lbIndex + 1) % lbImages.length;
+        showLightboxImage();
+        return;
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (!lb || lb.classList.contains('hidden')) return;
+      if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLightboxImage(); }
+      if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; showLightboxImage(); }
     });
   })();
 </script>

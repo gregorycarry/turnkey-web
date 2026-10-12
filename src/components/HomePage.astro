@@ -35,13 +35,15 @@ const newListings = [
     type: tr("Cabeleireiro / Salão", "Salon de coiffure", "Hair salon"),
     zone: tr("Eixo Amoreiras / Marquês de Pombal", "Axe Amoreiras / Marquês de Pombal", "Amoreiras / Marquês de Pombal axis"),
     kind: "trespasse" as const,
+    price: "250 000 €",
     metrics: [
       { label: tr("Área (r/c + 1º andar)", "Surface (rdc + étage)", "Area (ground + 1st floor)"), value: "240 m² (90 m² + 150 m²)" },
-      { label: tr("Preço", "Prix", "Price"), value: "250 000 €" },
-      { label: tr("Honorários", "Honoraires", "Agency fee"), value: "12 500 €" },
       { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("~400 000 €/ano", "~400 000 €/an", "~€400,000/year") },
-      { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "3 950 €" },
       { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: "B" },
+    ],
+    financials: [
+      { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "3 950 €" },
+      { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: "12 500 €" },
     ],
     strengths: [
       tr("Equipa de 7 pessoas pronta a continuar", "Équipe de 7 personnes prête à continuer", "7-person team ready to stay"),
@@ -84,6 +86,7 @@ const newListings = [
   },
 ];
 
+const labelFinancials = tr("Condições financeiras", "Conditions financières", "Financial conditions");
 const labelStrengths = tr("Pontos fortes", "Points forts", "Strengths");
 const labelReason = tr("Motivo", "Motif", "Reason");
 const labelRequestFile = tr("Pedir o dossier", "Demander le dossier", "Request the file");
@@ -206,7 +209,10 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
                 <span class={`text-xs font-semibold ${isWalls ? "bg-[var(--color-gold)]/10 text-[var(--color-gold)]" : "bg-[var(--color-orange)]/10 text-[var(--color-orange)]"} px-2 py-1 rounded`}>{labelStatusAvailable}</span>
               </div>
               <h3 class="text-xl font-bold text-[var(--color-anthracite)] mb-1">{m.type}</h3>
-              <p class="text-sm text-[var(--color-anthracite)]/60 mb-4">{m.zone}</p>
+              <p class="text-sm text-[var(--color-anthracite)]/60 mb-3">{m.zone}</p>
+              {m.price && (
+                <p class="text-2xl font-black text-[var(--color-orange)] mb-4">{m.price}</p>
+              )}
               <div class="grid grid-cols-2 gap-3 mb-4 py-4 border-y border-gray-100">
                 {m.metrics.map((metric) => (
                   <div>
@@ -215,6 +221,17 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
                   </div>
                 ))}
               </div>
+              {m.financials && (
+                <div class="mb-4 bg-[var(--color-cream)] rounded-md px-4 py-3">
+                  <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelFinancials}</p>
+                  {m.financials.map((f) => (
+                    <div class="flex items-center justify-between py-1 text-sm">
+                      <span class="text-[var(--color-anthracite)]/70">{f.label}</span>
+                      <span class="font-bold text-[var(--color-anthracite)]">{f.value}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
               <div class="mb-4">
                 <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelStrengths}</p>
                 <div class="flex flex-wrap gap-2">

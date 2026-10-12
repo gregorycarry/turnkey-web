@@ -46,11 +46,12 @@ const newListings = [
       { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: "12 500 €" },
     ],
     mapQuery: "Amoreiras, Lisboa",
+    metro: tr("Rato / Marquês de Pombal (~15 min a pé)", "Rato / Marquês de Pombal (~15 min à pied)", "Rato / Marquês de Pombal (~15 min walk)"),
+    nearbyShops: tr("Comércio de proximidade: centro comercial, bancos, farmácias, restauração", "Commerces de proximité : centre commercial, banques, pharmacies, restauration", "Nearby amenities: shopping center, banks, pharmacies, restaurants"),
     environment: [
-      tr("Zona mista escritórios/residencial", "Quartier mixte bureaux/résidentiel", "Mixed office/residential area"),
+      tr("Zona de escritórios", "Quartier de bureaux", "Office area"),
+      tr("Zona residencial", "Quartier résidentiel", "Residential area"),
       tr("Fluxo pedonal elevado", "Flux piéton important", "High foot traffic"),
-      tr("Próximo ao Centro Comercial Amoreiras", "À proximité du Centre Commercial Amoreiras", "Near Amoreiras Shopping Center"),
-      tr("Boa visibilidade de rua", "Bonne visibilité sur rue", "Good street visibility"),
     ],
     strengths: [
       tr("Equipa de 7 pessoas pronta a continuar", "Équipe de 7 personnes prête à continuer", "7-person team ready to stay"),
@@ -255,6 +256,8 @@ const labelStatusAvailable = tr("Disponível", "Disponible", "Available");
               {m.environment && (
                 <div class="mb-4">
                   <p class="text-xs text-[var(--color-anthracite)]/60 uppercase tracking-wider mb-2">{labelEnvironment}</p>
+                  {m.metro && <p class="text-sm text-[var(--color-anthracite)]/80 mb-1">🚇 {m.metro}</p>}
+                  {m.nearbyShops && <p class="text-sm text-[var(--color-anthracite)]/80 mb-2">{m.nearbyShops}</p>}
                   <div class="flex flex-wrap gap-2">
                     {m.environment.map((e) => (
                       <span class="text-xs bg-blue-50 text-[var(--color-anthracite)] px-2 py-1 rounded">{e}</span>

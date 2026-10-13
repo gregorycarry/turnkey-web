@@ -128,7 +128,7 @@ const labelBack = tr("Voltar aos mandatos", "Retour aux mandats", "Back to listi
         {m.mapQuery && (
           <div class="mb-6 rounded-md overflow-hidden border border-gray-100">
             <iframe
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(m.mapQuery)}&z=13&output=embed`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(m.mapQuery)}${m.mapLat && m.mapLng ? `&ll=${m.mapLat},${m.mapLng}` : ""}&z=14&output=embed`}
               width="100%"
               height="260"
               style="border:0;"

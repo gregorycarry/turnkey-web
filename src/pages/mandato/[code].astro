@@ -14,6 +14,6 @@ const title = `${listing.type} — ${listing.zone} | TurnKey`;
 const description = `${listing.type} em ${listing.zone}. Mandato TurnKey, trespasse acompanhado por Grégory Vincent, IAD Portugal AMI 11220.`;
 ---
 
-<BaseLayout lang="pt" title={title} description={description} langUrls={langUrls}>
+<BaseLayout lang="pt" title={title} description={description} langUrls={langUrls} ogImage={listing.ogImage} ogImageAlt={listing.type}>
   <ListingDetail lang="pt" listing={listing} />
 </BaseLayout>

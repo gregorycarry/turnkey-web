@@ -19,9 +19,14 @@ export interface Listing {
   price?: string;
   description?: string;
   images?: ListingImage[];
+  /** Absolute URL to a 1200x630 image used for social-share previews (WhatsApp, etc). */
+  ogImage?: string;
   metrics: ListingMetric[];
   financials?: ListingMetric[];
   mapQuery?: string;
+  /** Explicit center coordinates so the embed reliably zooms to the neighbourhood instead of defaulting to a world view. */
+  mapLat?: number;
+  mapLng?: number;
   metro?: string;
   nearbyShops?: string;
   environment?: string[];
@@ -57,6 +62,7 @@ export function getListings(lang: Lang): Listing[] {
       kind: "trespasse" as const,
       category: "commerce" as const,
       price: "250 000 €",
+      ogImage: "https://turnkey.pt/listings/tk-2026-002/og.jpg",
       description: tr(
         "Salão de cabeleireiro instalado há mais de 15 anos no eixo Amoreiras / Marquês de Pombal, uma zona que combina escritórios, residencial e forte fluxo pedonal. Os 240 m² distribuem-se por dois pisos: rés-do-chão com receção, postos de trabalho e lavatórios, e um piso dedicado a tratamentos com sala de spa/massagem. A equipa de 7 pessoas está pronta para continuar a atividade sem interrupção, com equipamento recente de marcas premium. Clientela fiel e faturação regular e constante, com forte perspetiva de evolução.",
         "Salon de coiffure installé depuis plus de 15 ans sur l'axe Amoreiras / Marquês de Pombal, un quartier qui mêle bureaux, résidentiel et fort passage piéton. Les 240 m² se répartissent sur deux niveaux : rez-de-chaussée avec réception, postes de coiffure et bacs à shampoing, et un étage dédié aux soins avec salle de spa/massage. L'équipe de 7 personnes est en place et prête à poursuivre l'activité sans interruption, avec un équipement récent de marques premium. Clientèle fidèle et facturation régulière et constante, avec une forte perspective d'évolution.",
@@ -81,6 +87,8 @@ export function getListings(lang: Lang): Listing[] {
         { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: "12 500 €" },
       ],
       mapQuery: "Amoreiras, Lisboa",
+      mapLat: 38.7237,
+      mapLng: -9.1634,
       metro: tr("Rato / Marquês de Pombal (~15 min a pé)", "Rato / Marquês de Pombal (~15 min à pied)", "Rato / Marquês de Pombal (~15 min walk)"),
       nearbyShops: tr("Comércio de proximidade: centro comercial, bancos, farmácias, restauração", "Commerces de proximité : centre commercial, banques, pharmacies, restauration", "Nearby amenities: shopping center, banks, pharmacies, restaurants"),
       environment: [

@@ -7,6 +7,102 @@ const langUrls = {
   fr: "/fr/faq-trespasse",
   en: "/en/trespasse-faq",
 };
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Trespasse Lisbonne — Questions Fréquentes 2026",
+  "url": "https://turnkey.pt/fr/faq-trespasse",
+  "inLanguage": "fr",
+  "publisher": {
+    "@type": "Person",
+    "name": "Grégory Vincent",
+    "jobTitle": "Agent Commercial — Transmission de commerces",
+    "url": "https://turnkey.pt/fr/"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien coûte un trespasse à Lisbonne en 2026 ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ça dépend du secteur et de l'emplacement. Fourchettes observées à Lisbonne centre : café/snack 40–120 k€, restaurant courant 80–250 k€, restaurant prime (Chiado, Príncipe Real, Alfama) 200–600 k€, salon/institut 25–90 k€, boutique retail 15–100 k€. Le prix du trespasse ne comprend pas la valeur immobilière (seulement l'exploitation). Le loyer continue d'être dû au bailleur."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on vendre un trespasse à perte ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Le vendeur fixe librement le prix, y compris symbolique (1 €) quand l'objectif est juste de transférer les responsabilités du bail, des salariés et des licences. Une vente en dessous du capital investi est fréquente dans les cessations d'activité, divorces ou changements de projet. La plus-value (ou moins-value) constatée entre dans la déclaration fiscale du cédant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un trespasse peut-il échouer après la signature du contrato-promessa ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, mais rarement sans conséquence. Si l'acheteur se désiste sans motif contractuel, il perd son acompte (généralement 10% du prix). Si le vendeur recule, il doit restituer l'acompte au double (art. 442.º Code Civil portugais). Les conditions suspensives typiques qui permettent d'annuler sans pénalité : refus de financement bancaire documenté, clause de cession du bail incompatible, licence intransmissible découverte en due diligence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qui prépare l'inventaire du matériel et des stocks ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le cédant prépare l'inventaire initial et l'annexe au contrato-promessa — matériel (fours, chambres froides, mobilier), décoration, consommables, stocks à la date de signature. L'inventaire contradictoire final se fait le jour de la signature définitive, les deux parties présentes : validation des actifs, mise à jour du stock à la date réelle, ajustement de prix si le stock a varié de plus de ±10% par rapport à l'estimé."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Faut-il un avocat pour un trespasse ? Un notaire ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Avocat : fortement recommandé pour l'acheteur sur les dossiers au-dessus de 100 k€, obligatoire pour la due diligence du bail et des licences. Honoraires typiques 1 500–4 000 € pour un dossier courant. Notaire : obligatoire uniquement si le trespasse comprend des droits réels immobiliers. Pour la majorité des trespasses (sans achat du local), un acte sous seing privé avec signatures reconnues suffit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jusqu'où peut-on négocier le prix d'un trespasse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "À Lisbonne, l'écart moyen entre prix affiché et prix de signature se situe entre 8 et 18% sur un dossier courant. Au-delà, il faut une justification concrète : travaux à prévoir (matériel en fin de vie, mise en conformité ASAE), passif social lourd, loyer en révision prochaine, trous dans la documentation. Dans les marchés très tendus (restauration Chiado ou Príncipe Real) l'écart peut tomber à 0–5%, voire des ventes au-dessus du prix affiché."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de temps garder le cédant en période d'accompagnement ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L'usage : 2 à 4 semaines de présence du cédant après la reprise, en période gracieuse ou rémunérée (à définir au contrat). Elle sert à transférer les relations fournisseurs, former l'équipe aux process existants, présenter les clients-clés. Sur des dossiers plus techniques (boulangerie d'auteur, cuisine de niche) ça peut monter à 2–3 mois. La clause de non-concurrence standard : 2 ans, rayon 1 km."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "L'ASAE peut-elle refuser le transfert d'une licence ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui dans certains cas. Les licences liées au local (horaires de fermeture, autorisation de terrasse, licence de boissons alcoolisées) se transfèrent normalement si le local reste exploité pour la même activité. Les licences personnelles (direction technique en pharmacie, carte pro de coiffure) doivent être obtenues par le nouvel exploitant. Si l'usage du local change (ex : café → bar avec musique live), l'ASAE peut exiger une nouvelle licence et un nouveau dossier (3–6 mois de délai)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment vérifier qu'un bail commercial autorise le trespasse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Demandez une copie intégrale du contrat de bail (avec avenants et actualisations de loyer) avant toute proposition. Cherchez les clauses mentionnant 'trespasse', 'cessão', 'transmissão' ou 'sous-location'. Dans les baux récents (post-NRAU 2006), le trespasse est généralement libre. Dans les baux anciens (pré-1990) il peut y avoir des restrictions ou une autorisation du bailleur requise. En cas de doute : avis d'un avocat en immobilier commercial avant la promesse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que faire si le bailleur conteste la notification de trespasse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La notification se fait par lettre recommandée avec AR dans les 15 jours suivant la signature. Le bailleur dispose alors de 30 jours pour exercer son droit de préemption (racheter le fonds aux mêmes conditions) ou pour contester — par exemple si le bail interdit la cession. S'il conteste sans fondement valable, continuer la mise en œuvre normale avec accompagnement juridique : le trespasse reste efficace entre les parties, même en cas de litige avec le bailleur."
+      }
+    }
+  ]
+});
 ---
 
 <BaseLayout
@@ -14,6 +110,7 @@ const langUrls = {
   title="FAQ Trespasse à Lisbonne — 10 Questions Pratiques 2026 | TurnKey"
   description="Les 10 questions pratiques que posent acheteurs et vendeurs avant un trespasse à Lisbonne : prix, négociation, inventaire, licences ASAE, bail, accompagnement. Réponses directes 2026."
   langUrls={langUrls}
+  schema={faqSchema}
 >
   <div class="guide-page">
     <div class="page-wrap">

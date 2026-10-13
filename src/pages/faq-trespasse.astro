@@ -7,6 +7,102 @@ const langUrls = {
   fr: "/fr/faq-trespasse",
   en: "/en/trespasse-faq",
 };
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Trespasse Lisboa — Perguntas Frequentes 2026",
+  "url": "https://turnkey.pt/faq-trespasse",
+  "inLanguage": "pt",
+  "publisher": {
+    "@type": "Person",
+    "name": "Grégory Vincent",
+    "jobTitle": "Agente Comercial — Transmissão de Comércios",
+    "url": "https://turnkey.pt/"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto custa um trespasse em Lisboa em 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do setor e da localização. Intervalos observados em Lisboa centro: café/snack bar 40–120 k€, restaurante corrente 80–250 k€, restaurante prime (Chiado, Príncipe Real, Alfama) 200–600 k€, cabeleireiro/instituto 25–90 k€, loja de retalho 15–100 k€. O preço do trespasse não inclui o valor do fundo imobiliário (apenas a exploração). O arrendamento continua devido ao senhorio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso vender um trespasse com prejuízo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. O vendedor é livre de fixar o preço que entender, incluindo um valor simbólico (1 €) quando o objetivo é apenas transferir as responsabilidades do arrendamento, dos trabalhadores e das licenças. Uma venda abaixo do valor investido é frequente em cessações de atividade, divórcios ou mudanças de projeto. A mais-valia (ou menos-valia) apurada entra na declaração fiscal do cedente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pode um trespasse falhar após a assinatura do contrato-promessa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, mas raramente sem consequências. Se o comprador desiste sem motivo contratual, perde o sinal (habitualmente 10% do preço). Se o vendedor recua, deve devolver o sinal em dobro (art. 442.º Código Civil). As condições suspensivas típicas que permitem desistir sem penalidade: recusa do financiamento bancário documentada, cláusula de cessão do arrendamento incompatível, licença intransmissível descoberta na due diligence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quem prepara o inventário do equipamento e das existências?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O cedente prepara o inventário inicial e anexa-o ao contrato-promessa — equipamento (fornos, câmaras, móveis), decoração, materiais, stocks em dia de assinatura. O inventário contraditório final faz-se no dia da escritura, com ambas as partes presentes: validação dos ativos, atualização do stock à data real, ajuste de preço se o stock variou mais de ±10% em relação ao estimado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "É necessário advogado para um trespasse? E notário?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Advogado: altamente recomendado para o comprador em dossiers acima de 100 k€, obrigatório na due diligence do arrendamento e das licenças. Honorários típicos 1 500–4 000 € para um dossier corrente. Notário: obrigatório apenas se o trespasse incluir direitos reais sobre imóveis. Para a maioria dos trespasses (sem compra do espaço), um contrato escrito particular com assinaturas reconhecidas basta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Até onde se pode negociar o preço de um trespasse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em Lisboa, o desconto médio entre preço anunciado e preço final situa-se entre 8 e 18% para um dossier corrente. Além disso, exige-se uma justificação concreta: trabalhos a prever (equipamento no fim de vida, obras ASAE), passivo laboral significativo, renda prestes a ser revista, lacunas na documentação. Em mercados muito aquecidos (restauração em Chiado ou Príncipe Real) o desconto pode cair a 0–5% ou mesmo a ultra-vendas acima do preço anunciado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo manter o cedente em período de acompanhamento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O habitual: 2 a 4 semanas de presença do cedente após a transferência, em período gratuito ou pago (a definir no contrato). Serve para transferir as relações com fornecedores, formar a equipa aos processos existentes e apresentar os clientes-chave. Em dossiers mais técnicos (bakery de autor, cozinha de nicho) pode subir a 2–3 meses. A cláusula de não-concorrência habitual: 2 anos, raio de 1 km."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A ASAE pode recusar o transfer de uma licença?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, em alguns casos. As licenças ligadas ao espaço (horário de encerramento, autorização de esplanada, licença de bebidas alcoólicas) transferem-se normalmente se o espaço continua a ser utilizado para a mesma atividade. As licenças pessoais (direção técnica em farmácia, carteira profissional de cabeleireiro) devem ser obtidas pelo novo explorador. Se o uso do espaço muda (exemplo: café para bar com música ao vivo), a ASAE pode exigir nova licença e novo processo, com prazo de 3–6 meses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como verificar se um arrendamento comercial permite trespasse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Peça uma cópia integral do contrato de arrendamento (incluindo adendas e atualizações de renda) antes de qualquer proposta. Procure as cláusulas que mencionam 'trespasse', 'cessão', 'transmissão' ou 'subarrendamento'. Em contratos recentes (pós-NRAU 2006), o trespasse é geralmente livre. Em contratos antigos (pré-1990), pode haver limitações ou necessidade de autorização do senhorio. Em caso de dúvida: parecer de advogado em imobiliário comercial antes da promessa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que fazer se o senhorio contestar a notificação de trespasse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A notificação faz-se por carta registada com aviso de receção nos 15 dias após a escritura. O senhorio dispõe então de 30 dias para exercer o direito de preferência (comprar o fundo nas mesmas condições) ou para contestar — por exemplo se o contrato de arrendamento proíbe a cessão. Se contesta sem fundamento válido, continue a execução normal com acompanhamento jurídico: o trespasse continua eficaz entre as partes, mesmo em caso de litígio com o senhorio."
+      }
+    }
+  ]
+});
 ---
 
 <BaseLayout
@@ -14,6 +110,7 @@ const langUrls = {
   title="FAQ Trespasse em Lisboa — 10 Perguntas Práticas 2026 | TurnKey"
   description="As 10 perguntas práticas que compradores e vendedores fazem antes de um trespasse em Lisboa: preço, negociação, inventário, licenças ASAE, bail, acompanhamento. Respostas diretas 2026."
   langUrls={langUrls}
+  schema={faqSchema}
 >
   <div class="guide-page">
     <div class="page-wrap">

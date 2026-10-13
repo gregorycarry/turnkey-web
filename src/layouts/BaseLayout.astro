@@ -14,9 +14,11 @@ interface Props {
   /** Overrides the default social-share image (e.g. a listing's own cover photo). Absolute URL. */
   ogImage?: string;
   ogImageAlt?: string;
+  /** JSON-LD structured data string (e.g. FAQPage schema for GEO). Injected as-is into <head>. */
+  schema?: string;
 }
 
-const { lang, title, description, langUrls, ogImage, ogImageAlt } = Astro.props;
+const { lang, title, description, langUrls, ogImage, ogImageAlt, schema } = Astro.props;
 const t = useTranslations(lang);
 const pageTitle = title ?? t("meta.title");
 const pageDescription = description ?? t("meta.description");
@@ -76,6 +78,9 @@ const buildAltUrl = (code: Lang) => {
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={shareImage} />
+
+    <!-- Structured data (JSON-LD) — GEO / AI citation -->
+    {schema && <script type="application/ld+json" set:html={schema} />}
   </head>
   <body>
     <Header lang={lang} langUrls={langUrls} />

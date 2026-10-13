@@ -76,6 +76,7 @@ export function getListings(lang: Lang): Listing[] {
         { src: "/listings/tk-2026-002/row.jpg", alt: tr("Sala de corte com luz natural", "Salle de coupe avec lumière naturelle", "Styling room with natural light") },
         { src: "/listings/tk-2026-002/spa.jpg", alt: tr("Sala de tratamento / spa", "Salle de soin / spa", "Treatment / spa room") },
         { src: "/listings/tk-2026-002/lounge.jpg", alt: tr("Espaço de espera", "Espace d'attente", "Waiting area") },
+        { src: "/listings/tk-2026-002/wash.jpg", alt: tr("Zona de lavagem", "Zone de lavage", "Wash station") },
       ],
       metrics: [
         { label: tr("Área (r/c + 1º andar)", "Surface (rdc + étage)", "Area (ground + 1st floor)"), value: "240 m² (90 m² + 150 m²)" },

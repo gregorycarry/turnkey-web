@@ -11,7 +11,7 @@ export const ui = {
   pt: {
     // Meta
     'meta.title': 'TurnKey — Trespasses de comércios em Lisboa',
-    'meta.description': 'TurnKey acompanha trespasses e aquisições de fundos de comércio em Lisboa. Broker com licença IAD Portugal AMI 11220.',
+    'meta.description': 'TurnKey acompanha trespasses e aquisições de fundos de comércio em Lisboa. Mediação imobiliária licenciada AMI (ref. a pedido).',
     'htmlLang': 'pt-PT',
 
     // Header nav
@@ -23,7 +23,7 @@ export const ui = {
     'nav.openMenu': 'Abrir menu',
 
     // Hero
-    'hero.license': 'IAD Portugal — AMI 11220',
+    'hero.license': 'Mediação Imobiliária · Licença AMI (ref. a pedido)',
     'hero.titleLine1': 'Trespasses e aquisições de fundos de comércio em Lisboa.',
     'hero.titleLine2': 'Um olhar de operador ao serviço da transação.',
     'hero.tagline': 'Transmitir um negócio, não o seu valor.',
@@ -86,8 +86,8 @@ export const ui = {
     'why.card1Text': 'Geri o APF Café em Lapa durante vários anos. Conheço os custos, as margens, as armadilhas — sinto quando um dossier tem fundamento.',
     'why.card2Title': 'Confidencialidade integral',
     'why.card2Text': 'Nunca a sua insígnia, nunca o seu endereço. Teasers cegos, NDA antes de qualquer dossier detalhado.',
-    'why.card3Title': 'Honorários IAD competitivos',
-    'why.card3Text': 'Estrutura IAD Portugal, honorários transparentes, abaixo de um gabinete M&A clássico.',
+    'why.card3Title': 'Honorários competitivos',
+    'why.card3Text': 'Estrutura leve, honorários transparentes, abaixo de um gabinete M&A clássico.',
 
     // About
     'about.eyebrow': 'Sobre',
@@ -96,7 +96,7 @@ export const ui = {
     'about.role': 'Broker em trespasses de comércios — Lisboa',
     'about.inBriefLabel': 'Em breve',
     'about.structureLabel': 'Estrutura',
-    'about.structureValue': 'IAD Portugal',
+    'about.structureValue': 'Mediação licenciada AMI',
     'about.zoneLabel': 'Zona',
     'about.zoneValue': 'Lisboa e arredores',
     'about.languagesLabel': 'Idiomas',
@@ -124,11 +124,11 @@ export const ui = {
     'footer.navCases': 'Casos reais',
     'footer.contactLabel': 'Contacto',
     'footer.location': 'Lisboa, Portugal',
-    'footer.description': 'A TurnKey acompanha o trespasse e a aquisição de fundos de comércio em Lisboa. Broker com licença IAD Portugal AMI 11220.',
+    'footer.description': 'A TurnKey acompanha o trespasse e a aquisição de fundos de comércio em Lisboa. Mediação imobiliária licenciada AMI (ref. a pedido).',
     'footer.legalMentions': 'Menções legais',
     'footer.privacy': 'Privacidade',
     'footer.cookies': 'Cookies',
-    'footer.copyright': '© 2026 TurnKey · Grégory Vincent · IAD Portugal · AMI 11220',
+    'footer.copyright': '© 2026 TurnKey · Grégory Vincent',
 
     // Modales
     'modal.close': 'Fechar',
@@ -194,7 +194,7 @@ export const ui = {
   fr: {
     // Meta
     'meta.title': 'TurnKey — Cessions de commerces à Lisbonne',
-    'meta.description': 'TurnKey accompagne les cessions et acquisitions de fonds de commerce à Lisbonne. Broker sous licence IAD Portugal AMI 11220.',
+    'meta.description': 'TurnKey accompagne les cessions et acquisitions de fonds de commerce à Lisbonne. Intermédiation immobilière agréée AMI (ref. sur demande).',
     'htmlLang': 'fr',
 
     // Header nav
@@ -206,7 +206,7 @@ export const ui = {
     'nav.openMenu': 'Ouvrir le menu',
 
     // Hero
-    'hero.license': 'IAD Portugal — AMI 11220',
+    'hero.license': 'Médiation Immobilière · Licence AMI (ref. sur demande)',
     'hero.titleLine1': 'Cessions et acquisitions de fonds de commerce à Lisbonne.',
     'hero.titleLine2': "Un œil d'exploitant au service de la transaction.",
     'hero.tagline': 'Transmettre un commerce, pas sa valeur.',
@@ -269,8 +269,8 @@ export const ui = {
     'why.card1Text': "J'ai géré APF Café à Lapa pendant plusieurs années. Je connais les coûts, les marges, les pièges — et je le sens quand un dossier tient la route.",
     'why.card2Title': 'Confidentialité intégrale',
     'why.card2Text': 'Jamais votre enseigne, jamais votre adresse. Teasers aveugles, NDA avant tout dossier détaillé.',
-    'why.card3Title': 'Frais IAD compétitifs',
-    'why.card3Text': "Structure IAD Portugal, honoraires transparents, moins chers qu'un cabinet de conseil M&A classique.",
+    'why.card3Title': 'Frais compétitifs',
+    'why.card3Text': "Structure légère, honoraires transparents, moins chers qu'un cabinet de conseil M&A classique.",
 
     // About
     'about.eyebrow': 'À propos',
@@ -279,7 +279,7 @@ export const ui = {
     'about.role': 'Broker en transmission de commerces — Lisbonne',
     'about.inBriefLabel': 'En bref',
     'about.structureLabel': 'Structure',
-    'about.structureValue': 'IAD Portugal',
+    'about.structureValue': 'Médiation agréée AMI',
     'about.zoneLabel': 'Zone',
     'about.zoneValue': 'Lisbonne & limitrophes',
     'about.languagesLabel': 'Langues',
@@ -307,11 +307,11 @@ export const ui = {
     'footer.navCases': 'Cas réels',
     'footer.contactLabel': 'Contact',
     'footer.location': 'Lisbonne, Portugal',
-    'footer.description': "TurnKey accompagne la cession et l'acquisition de fonds de commerce à Lisbonne. Broker sous licence IAD Portugal AMI 11220.",
+    'footer.description': "TurnKey accompagne la cession et l'acquisition de fonds de commerce à Lisbonne. Intermédiation immobilière agréée AMI (ref. sur demande).",
     'footer.legalMentions': 'Mentions légales',
     'footer.privacy': 'Confidentialité',
     'footer.cookies': 'Cookies',
-    'footer.copyright': '© 2026 TurnKey · Grégory Vincent · IAD Portugal · AMI 11220',
+    'footer.copyright': '© 2026 TurnKey · Grégory Vincent',
 
     // Modales
     'modal.close': 'Fermer',
@@ -377,7 +377,7 @@ export const ui = {
   en: {
     // Meta
     'meta.title': 'TurnKey — Business transfers in Lisbon',
-    'meta.description': 'TurnKey advises on the sale and acquisition of businesses in Lisbon. Broker licensed under IAD Portugal AMI 11220.',
+    'meta.description': 'TurnKey advises on the sale and acquisition of businesses in Lisbon. Licensed real estate intermediary (AMI ref. on request).',
     'htmlLang': 'en',
 
     // Header nav
@@ -389,7 +389,7 @@ export const ui = {
     'nav.openMenu': 'Open menu',
 
     // Hero
-    'hero.license': 'IAD Portugal — AMI 11220',
+    'hero.license': 'Licensed Real Estate Brokerage · AMI (ref. on request)',
     'hero.titleLine1': 'Sale and acquisition of businesses in Lisbon.',
     'hero.titleLine2': "An operator's eye at the service of the transaction.",
     'hero.tagline': 'Transfer the business, not its value.',
@@ -452,8 +452,8 @@ export const ui = {
     'why.card1Text': 'I ran APF Café in Lapa for several years. I know the costs, the margins, the traps — and I can tell when a file holds up.',
     'why.card2Title': 'Full confidentiality',
     'why.card2Text': 'Never your brand, never your address. Blind teasers, NDA before any detailed file.',
-    'why.card3Title': 'Competitive IAD fees',
-    'why.card3Text': 'IAD Portugal structure, transparent fees, below those of a classic M&A advisory firm.',
+    'why.card3Title': 'Competitive fees',
+    'why.card3Text': 'Lean structure, transparent fees, below those of a classic M&A advisory firm.',
 
     // About
     'about.eyebrow': 'About',
@@ -462,7 +462,7 @@ export const ui = {
     'about.role': 'Broker in business transfers — Lisbon',
     'about.inBriefLabel': 'In brief',
     'about.structureLabel': 'Structure',
-    'about.structureValue': 'IAD Portugal',
+    'about.structureValue': 'Licensed AMI brokerage',
     'about.zoneLabel': 'Area',
     'about.zoneValue': 'Lisbon and surroundings',
     'about.languagesLabel': 'Languages',
@@ -490,11 +490,11 @@ export const ui = {
     'footer.navCases': 'Case studies',
     'footer.contactLabel': 'Contact',
     'footer.location': 'Lisbon, Portugal',
-    'footer.description': 'TurnKey advises on business sales and acquisitions in Lisbon. Broker licensed under IAD Portugal AMI 11220.',
+    'footer.description': 'TurnKey advises on business sales and acquisitions in Lisbon. Licensed real estate intermediary (AMI ref. on request).',
     'footer.legalMentions': 'Legal notice',
     'footer.privacy': 'Privacy',
     'footer.cookies': 'Cookies',
-    'footer.copyright': '© 2026 TurnKey · Grégory Vincent · IAD Portugal · AMI 11220',
+    'footer.copyright': '© 2026 TurnKey · Grégory Vincent',
 
     // Modales
     'modal.close': 'Close',

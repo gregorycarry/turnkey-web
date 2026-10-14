@@ -11,7 +11,7 @@ const { code } = Astro.params;
 const listing = getListings("en").find((l) => l.code === code)!;
 const langUrls = listingDetailUrls(listing.code);
 const title = `${listing.type} for Sale in ${listing.zone}, Lisbon | TurnKey`;
-const description = `${listing.type} for sale in ${listing.zone}, Lisbon, Portugal.${listing.price ? ` Asking price ${listing.price}.` : ""} Business transfer (trespasse) handled by Grégory Vincent, TurnKey — IAD Portugal AMI 11220.`;
+const description = `${listing.type} for sale in ${listing.zone}, Lisbon, Portugal.${listing.price ? ` Asking price ${listing.price}.` : ""} Business transfer (trespasse) handled by Grégory Vincent, TurnKey — AMI licensed brokerage.`;
 ---
 
 <BaseLayout lang="en" title={title} description={description} langUrls={langUrls} ogImage={listing.ogImage} ogImageAlt={listing.type}>

@@ -56,6 +56,36 @@ export function getListings(lang: Lang): Listing[] {
 
   return [
     {
+      code: "TK-2026-005",
+      type: tr("Restaurante de tapas", "Restaurant de tapas", "Tapas restaurant"),
+      zone: tr("Chaves · Norte de Portugal", "Chaves · nord du Portugal", "Chaves · Northern Portugal"),
+      kind: "trespasse" as const,
+      category: "fb" as const,
+      description: tr(
+        "Restaurante de tapas com galeria de arte, no coração do centro histórico de Chaves, no norte de Portugal. Espaço de 80 m² com 48 lugares no interior, cozinha equipada e uma decoração com identidade própria (cerâmica, quadros, iluminação), aberto desde junho de 2026. Um conceito diferente que alia cozinha de tapas e arte, numa cidade que se anima com eventos e visitantes. Equipamento da empresa incluído no trespasse.",
+        "Restaurant de tapas avec galerie d'art, au cœur du centre historique de Chaves, dans le nord du Portugal. Un espace de 80 m² avec 48 couverts en salle, une cuisine équipée et une décoration qui a de la personnalité (céramiques, tableaux, éclairages), ouvert depuis juin 2026. Un concept singulier qui allie cuisine de tapas et art, dans une ville qui s'anime avec les événements et les visiteurs. Matériel de la société inclus dans le trespasse.",
+        "Tapas restaurant with an art gallery, in the heart of the historic centre of Chaves, in northern Portugal. An 80 sqm space with 48 indoor seats, an equipped kitchen and a distinctive decor (ceramics, paintings, lighting), open since June 2026. A different concept combining tapas cuisine and art, in a town that comes alive with events and visitors. Company equipment included in the trespasse."
+      ),
+      metrics: [
+        { label: tr("Área", "Surface", "Area"), value: "80 m²" },
+        { label: tr("Capacidade", "Capacité", "Capacity"), value: tr("48 lugares (interior)", "48 couverts (intérieur)", "48 seats (indoor)") },
+        { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("Sob consulta", "Sur demande", "On request") },
+        { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: tr("Em preparação", "En préparation", "In preparation") },
+        { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
+      ],
+      environment: [
+        tr("Centro histórico", "Centre historique", "Historic centre"),
+        tr("Perto da fronteira com a Galiza", "Proche de la frontière galicienne", "Close to the Galician border"),
+      ],
+      strengths: [
+        tr("Conceito diferente: tapas e galeria de arte", "Concept singulier : tapas et galerie d'art", "Distinctive concept: tapas and art gallery"),
+        tr("Centro histórico de Chaves, perto da fronteira com a Galiza", "Centre historique de Chaves, proche de la frontière galicienne", "Historic centre of Chaves, close to the Galician border"),
+        tr("48 lugares no interior, cozinha equipada e equipamento da empresa incluído", "48 couverts en salle, cuisine équipée et matériel de la société inclus", "48 indoor seats, equipped kitchen and company equipment included"),
+        tr("Aberto desde junho de 2026, pronto a continuar", "Ouvert depuis juin 2026, prêt à continuer", "Open since June 2026, ready to carry on"),
+      ],
+      reason: tr("Cedente a deixar Portugal", "Départ du Portugal de la cédante", "Seller relocating abroad"),
+    },
+    {
       code: "TK-2026-002",
       type: tr("Cabeleireiro / Salão", "Salon de coiffure", "Hair salon"),
       zone: tr("Eixo Amoreiras / Marquês de Pombal", "Axe Amoreiras / Marquês de Pombal", "Amoreiras / Marquês de Pombal axis"),

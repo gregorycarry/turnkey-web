@@ -61,6 +61,7 @@ export function getListings(lang: Lang): Listing[] {
       zone: tr("Chaves · Norte de Portugal", "Chaves · nord du Portugal", "Chaves · Northern Portugal"),
       kind: "trespasse" as const,
       category: "fb" as const,
+      price: "75 000 €",
       ogImage: "https://turnkey.pt/listings/tk-2026-005/og.jpg",
       description: tr(
         "No coração do centro histórico de Chaves, um restaurante de tapas que é também galeria de arte. Paredes de granito à vista, vigas de madeira, balcão em mármore e cozinha à vista da sala criam um ambiente quente e autêntico, onde quadros e cerâmicas fazem parte da experiência. São 80 m² e 48 lugares no interior, em duas salas distintas, com cozinha equipada e equipamento da empresa incluído. Aberto desde junho de 2026, é um conceito com identidade própria, pronto a ser continuado por quem quiser explorar um espaço com carácter.",
@@ -82,7 +83,6 @@ export function getListings(lang: Lang): Listing[] {
         { label: tr("Capacidade", "Capacité", "Capacity"), value: tr("48 lugares (interior)", "48 couverts (intérieur)", "48 seats (indoor)") },
         { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("Sob consulta", "Sur demande", "On request") },
         { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: "C" },
-        { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
       ],
       environment: [
         tr("Centro histórico", "Centre historique", "Historic centre"),

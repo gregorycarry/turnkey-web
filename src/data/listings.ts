@@ -68,6 +68,7 @@ export function getListings(lang: Lang): Listing[] {
         "In the heart of Chaves' historic centre, a tapas restaurant that is also an art gallery. Exposed granite walls, wooden beams, a marble bar and a kitchen visible from the dining room create a warm, authentic atmosphere, where paintings and ceramics are part of the experience. 80 sqm with 48 indoor seats across two distinct rooms, with an equipped kitchen and company equipment included. Open since June 2026, a concept with a strong identity, ready to be carried on by an operator looking for a space with character."
       ),
       images: [
+        { src: "/listings/tk-2026-005/facade.jpg", alt: tr("Fachada do restaurante", "Façade du restaurant", "Restaurant façade") },
         { src: "/listings/tk-2026-005/cover.jpg", alt: tr("Sala com quadros e paredes de pedra", "Salle aux tableaux et murs en pierre", "Dining room with paintings and stone walls") },
         { src: "/listings/tk-2026-005/room.jpg", alt: tr("Sala em pedra à vista com aparador e candeeiro", "Salle en pierre apparente avec buffet et lampe", "Stone dining room with sideboard and lamp") },
         { src: "/listings/tk-2026-005/table.jpg", alt: tr("Mesa posta junto à pedra à vista", "Table dressée contre la pierre apparente", "Set table against exposed stone") },

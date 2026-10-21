@@ -61,16 +61,26 @@ export function getListings(lang: Lang): Listing[] {
       zone: tr("Chaves · Norte de Portugal", "Chaves · nord du Portugal", "Chaves · Northern Portugal"),
       kind: "trespasse" as const,
       category: "fb" as const,
+      ogImage: "https://turnkey.pt/listings/tk-2026-005/og.jpg",
       description: tr(
-        "Restaurante de tapas com galeria de arte, no coração do centro histórico de Chaves, no norte de Portugal. Espaço de 80 m² com 48 lugares no interior, cozinha equipada e uma decoração com identidade própria (cerâmica, quadros, iluminação), aberto desde junho de 2026. Um conceito diferente que alia cozinha de tapas e arte, numa cidade que se anima com eventos e visitantes. Equipamento da empresa incluído no trespasse.",
-        "Restaurant de tapas avec galerie d'art, au cœur du centre historique de Chaves, dans le nord du Portugal. Un espace de 80 m² avec 48 couverts en salle, une cuisine équipée et une décoration qui a de la personnalité (céramiques, tableaux, éclairages), ouvert depuis juin 2026. Un concept singulier qui allie cuisine de tapas et art, dans une ville qui s'anime avec les événements et les visiteurs. Matériel de la société inclus dans le trespasse.",
-        "Tapas restaurant with an art gallery, in the heart of the historic centre of Chaves, in northern Portugal. An 80 sqm space with 48 indoor seats, an equipped kitchen and a distinctive decor (ceramics, paintings, lighting), open since June 2026. A different concept combining tapas cuisine and art, in a town that comes alive with events and visitors. Company equipment included in the trespasse."
+        "No coração do centro histórico de Chaves, um restaurante de tapas que é também galeria de arte. Paredes de granito à vista, vigas de madeira, balcão em mármore e cozinha à vista da sala criam um ambiente quente e autêntico, onde quadros e cerâmicas fazem parte da experiência. São 80 m² e 48 lugares no interior, em duas salas distintas, com cozinha equipada e equipamento da empresa incluído. Aberto desde junho de 2026, é um conceito com identidade própria, pronto a ser continuado por quem quiser explorar um espaço com carácter.",
+        "Au cœur du centre historique de Chaves, un restaurant de tapas qui est aussi une galerie d'art. Murs en granit apparent, poutres en bois, comptoir en marbre et cuisine visible depuis la salle créent une ambiance chaleureuse et authentique, où tableaux et céramiques font partie de l'expérience. Soit 80 m² et 48 couverts en salle, répartis en deux espaces distincts, avec cuisine équipée et matériel de la société inclus. Ouvert depuis juin 2026, un concept à l'identité forte, prêt à être poursuivi par un exploitant qui cherche un lieu de caractère.",
+        "In the heart of Chaves' historic centre, a tapas restaurant that is also an art gallery. Exposed granite walls, wooden beams, a marble bar and a kitchen visible from the dining room create a warm, authentic atmosphere, where paintings and ceramics are part of the experience. 80 sqm with 48 indoor seats across two distinct rooms, with an equipped kitchen and company equipment included. Open since June 2026, a concept with a strong identity, ready to be carried on by an operator looking for a space with character."
       ),
+      images: [
+        { src: "/listings/tk-2026-005/cover.jpg", alt: tr("Sala com quadros e paredes de pedra", "Salle aux tableaux et murs en pierre", "Dining room with paintings and stone walls") },
+        { src: "/listings/tk-2026-005/room.jpg", alt: tr("Sala em pedra à vista com aparador e candeeiro", "Salle en pierre apparente avec buffet et lampe", "Stone dining room with sideboard and lamp") },
+        { src: "/listings/tk-2026-005/table.jpg", alt: tr("Mesa posta junto à pedra à vista", "Table dressée contre la pierre apparente", "Set table against exposed stone") },
+        { src: "/listings/tk-2026-005/window.jpg", alt: tr("Mesa junto à janela com cortinas", "Table près de la fenêtre aux voilages", "Table by the window with sheer curtains") },
+        { src: "/listings/tk-2026-005/ceramics.jpg", alt: tr("Cerâmicas expostas", "Céramiques exposées", "Displayed ceramics") },
+        { src: "/listings/tk-2026-005/art.jpg", alt: tr("Mesa comprida e quadro de arte", "Longue table et tableau d'art", "Long table and artwork") },
+        { src: "/listings/tk-2026-005/round.jpg", alt: tr("Mesa redonda em madeira e quadros", "Table ronde en bois et tableaux", "Round wooden table and paintings") },
+      ],
       metrics: [
         { label: tr("Área", "Surface", "Area"), value: "80 m²" },
         { label: tr("Capacidade", "Capacité", "Capacity"), value: tr("48 lugares (interior)", "48 couverts (intérieur)", "48 seats (indoor)") },
         { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("Sob consulta", "Sur demande", "On request") },
-        { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: tr("Em preparação", "En préparation", "In preparation") },
+        { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: "C" },
         { label: tr("Preço", "Prix", "Price"), value: tr("Sob consulta", "Sur demande", "On request") },
       ],
       environment: [
@@ -78,10 +88,10 @@ export function getListings(lang: Lang): Listing[] {
         tr("Perto da fronteira com a Galiza", "Proche de la frontière galicienne", "Close to the Galician border"),
       ],
       strengths: [
-        tr("Conceito diferente: tapas e galeria de arte", "Concept singulier : tapas et galerie d'art", "Distinctive concept: tapas and art gallery"),
-        tr("Centro histórico de Chaves, perto da fronteira com a Galiza", "Centre historique de Chaves, proche de la frontière galicienne", "Historic centre of Chaves, close to the Galician border"),
+        tr("Conceito diferente: tapas e galeria de arte, com quadros e cerâmicas integrados", "Concept singulier : tapas et galerie d'art, tableaux et céramiques intégrés", "Distinctive concept: tapas and art gallery, with paintings and ceramics built in"),
+        tr("Pedra à vista, vigas de madeira e balcão em mármore: um espaço com carácter", "Pierre apparente, poutres en bois et comptoir en marbre : un lieu de caractère", "Exposed stone, wooden beams and a marble bar: a space with character"),
         tr("48 lugares no interior, cozinha equipada e equipamento da empresa incluído", "48 couverts en salle, cuisine équipée et matériel de la société inclus", "48 indoor seats, equipped kitchen and company equipment included"),
-        tr("Aberto desde junho de 2026, pronto a continuar", "Ouvert depuis juin 2026, prêt à continuer", "Open since June 2026, ready to carry on"),
+        tr("Centro histórico de Chaves, perto da fronteira com a Galiza; aberto desde junho de 2026", "Centre historique de Chaves, proche de la frontière galicienne ; ouvert depuis juin 2026", "Historic centre of Chaves, close to the Galician border; open since June 2026"),
       ],
       reason: tr("Cedente a deixar Portugal", "Départ du Portugal de la cédante", "Seller relocating abroad"),
     },

@@ -85,6 +85,7 @@ export function getListings(lang: Lang): Listing[] {
       ],
       financials: [
         { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "1 200 €" },
+        { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: tr("4 000 € + IVA", "4 000 € + TVA", "€4,000 + VAT") },
       ],
       mapQuery: "Rua do Poço dos Negros 77, Lisboa",
       nearbyShops: tr("Cafés de especialidade, brunch, mercearias gourmet, galerias e lojas de design", "Cafés de spécialité, brunchs, épiceries fines, galeries et boutiques de design", "Specialty cafés, brunch spots, gourmet grocers, galleries and design shops"),

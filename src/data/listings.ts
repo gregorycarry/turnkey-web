@@ -56,6 +56,46 @@ export function getListings(lang: Lang): Listing[] {
 
   return [
     {
+      code: "TK-2026-007",
+      type: tr("Restaurante libanês (esquina com esplanada)", "Restaurant libanais (angle avec terrasse)", "Lebanese restaurant (corner with terrace)"),
+      zone: tr("Alcântara · Rua Luís de Camões, Lisboa", "Alcântara · Rua Luís de Camões, Lisbonne", "Alcântara · Rua Luís de Camões, Lisbon"),
+      kind: "trespasse" as const,
+      category: "fb" as const,
+      price: "230 000 €",
+      description: tr(
+        "Restaurante de esquina com esplanada em Alcântara, a cerca de 250 m da LX Factory, um dos polos turísticos e criativos mais visitados de Lisboa, rodeado de hotéis, escritórios, coworking e residentes. São 169 m² brutos (163 m² úteis) em open space, ao nível da rua, com cozinha refeita e equipada, climatização e extração de fumos. A sala foi recentemente remodelada, com mobiliário e equipamento novos. O restaurante tem uma classificação de 4,8/5 no Google, com mais de 300 avaliações, e a licença Jogos Santa Casa. Contrato de arrendamento até março de 2031, com renda de 1 200 €/mês, sujeita a atualização anual legal.",
+        "Restaurant d'angle avec terrasse à Alcântara, à environ 250 m de LX Factory, l'un des pôles touristiques et créatifs les plus visités de Lisbonne, entouré d'hôtels, de bureaux, de coworking et d'habitants. Soit 169 m² bruts (163 m² utiles) en open space, de plain-pied, avec cuisine refaite et équipée, climatisation et extraction de fumées. La salle a été récemment rénovée, avec mobilier et équipement neufs. Le restaurant affiche une note de 4,8/5 sur Google pour plus de 300 avis, et la licence Jogos Santa Casa. Bail jusqu'en mars 2031, loyer de 1 200 €/mois, soumis à l'actualisation annuelle légale.",
+        "Corner restaurant with a terrace in Alcântara, about 250 m from LX Factory, one of Lisbon's most visited tourist and creative destinations, surrounded by hotels, offices, coworking spaces and residents. 169 sqm gross (163 sqm usable), open-plan, at street level, with a refitted, equipped kitchen, air conditioning and extraction. The dining room was recently renovated, with new furniture and equipment. The restaurant holds a 4.8/5 rating on Google across 300+ reviews, and the Jogos Santa Casa licence. Lease runs until March 2031, rent €1,200/month, subject to the legal annual update."
+      ),
+      metrics: [
+        { label: tr("Área", "Surface", "Area"), value: tr("169 m² brutos (163 m² úteis)", "169 m² bruts (163 m² utiles)", "169 sqm gross (163 sqm usable)") },
+        { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("Sob consulta", "Sur demande", "On request") },
+      ],
+      financials: [
+        { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "1 200 €" },
+        { label: tr("Honorários de intermediação", "Honoraires d'intermédiation", "Agency fee"), value: "6 900 €" },
+      ],
+      mapQuery: "Rua Luís de Camões, Alcântara, Lisboa",
+      mapLat: 38.7030,
+      mapLng: -9.1817,
+      nearbyShops: tr("LX Factory, hotéis, escritórios, coworking e restauração", "LX Factory, hôtels, bureaux, coworking et restauration", "LX Factory, hotels, offices, coworking and restaurants"),
+      environment: [
+        tr("Zona turística e criativa", "Quartier touristique et créatif", "Tourist and creative district"),
+        tr("LX Factory a ~250 m", "LX Factory à ~250 m", "LX Factory ~250 m away"),
+        tr("Hotéis e escritórios nas proximidades", "Hôtels et bureaux à proximité", "Hotels and offices nearby"),
+      ],
+      strengths: [
+        tr("Esquina com esplanada e grande visibilidade", "Angle avec terrasse et forte visibilité", "Corner unit with terrace and high visibility"),
+        tr("Cozinha refeita e sala remodelada, com mobiliário e equipamento novos", "Cuisine refaite et salle rénovée, mobilier et équipement neufs", "Refitted kitchen and renovated dining room, new furniture and equipment"),
+        tr("Climatização e extração de fumos", "Climatisation et extraction de fumées", "Air conditioning and extraction"),
+        tr("4,8/5 no Google, com mais de 300 avaliações", "4,8/5 sur Google, plus de 300 avis", "4.8/5 on Google, 300+ reviews"),
+        tr("Licença Jogos Santa Casa", "Licence Jogos Santa Casa", "Jogos Santa Casa licence"),
+        tr("Arrendamento até março de 2031, renda de 1 200 €/mês", "Bail jusqu'en mars 2031, loyer de 1 200 €/mois", "Lease until March 2031, rent €1,200/month"),
+        tr("A 250 m da LX Factory, entre hotéis e escritórios", "À 250 m de LX Factory, entre hôtels et bureaux", "250 m from LX Factory, among hotels and offices"),
+      ],
+      reason: tr("Cessão pelos sócios", "Cession par les associés", "Sale by the partners"),
+    },
+    {
       code: "TK-2026-006",
       type: tr("Salão de manicure e pedicure (loja de esquina)", "Salon de manucure et pédicure (local d'angle)", "Nail & pedicure salon (corner unit)"),
       zone: tr("Rua do Poço dos Negros 77 · Santa Catarina, Lisboa", "Rua do Poço dos Negros 77 · Santa Catarina, Lisbonne", "Rua do Poço dos Negros 77 · Santa Catarina, Lisbon"),

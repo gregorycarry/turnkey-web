@@ -58,10 +58,22 @@ export function getListings(lang: Lang): Listing[] {
     {
       code: "TK-2026-006",
       type: tr("Salão de manicure e pedicure (loja de esquina)", "Salon de manucure et pédicure (local d'angle)", "Nail & pedicure salon (corner unit)"),
-      zone: tr("Santa Catarina / Misericórdia · Lisboa", "Santa Catarina / Misericórdia · Lisbonne", "Santa Catarina / Misericórdia · Lisbon"),
+      zone: tr("Rua do Poço dos Negros 77 · Santa Catarina, Lisboa", "Rua do Poço dos Negros 77 · Santa Catarina, Lisbonne", "Rua do Poço dos Negros 77 · Santa Catarina, Lisbon"),
       kind: "trespasse" as const,
       category: "commerce" as const,
       price: "70 000 €",
+      ogImage: "https://turnkey.pt/listings/tk-2026-006/og.jpg",
+      images: [
+        { src: "/listings/tk-2026-006/facade.jpg", alt: tr("Fachada de esquina, Rua do Poço dos Negros", "Façade d'angle, Rua do Poço dos Negros", "Corner façade, Rua do Poço dos Negros") },
+        { src: "/listings/tk-2026-006/cover.jpg", alt: tr("Sala com duas montras e coluna de ferro", "Salle avec deux vitrines et colonne en fonte", "Room with two shop windows and a cast-iron column") },
+        { src: "/listings/tk-2026-006/entrance.jpg", alt: tr("Entrada pela esquina e zulejos", "Entrée d'angle et zelliges", "Corner entrance and glazed tiles") },
+        { src: "/listings/tk-2026-006/banquette.jpg", alt: tr("Banco corrido e postos de trabalho", "Banquette et postes de travail", "Bench seating and work stations") },
+        { src: "/listings/tk-2026-006/tables.jpg", alt: tr("Mesas de manicure em latão e mármore", "Tables de manucure en laiton et marbre", "Brass and marble manicure tables") },
+        { src: "/listings/tk-2026-006/counter.jpg", alt: tr("Estantes e bancada com lavatório", "Étagères et plan de travail avec évier", "Shelving and counter with sink") },
+        { src: "/listings/tk-2026-006/shelves.jpg", alt: tr("Estantes integradas e acesso ao WC", "Étagères intégrées et accès aux WC", "Built-in shelving and access to the WC") },
+        { src: "/listings/tk-2026-006/door.jpg", alt: tr("Porta envidraçada sobre a rua", "Porte vitrée sur la rue", "Glazed door onto the street") },
+        { src: "/listings/tk-2026-006/plan.jpg", alt: tr("Planta do espaço", "Plan du local", "Floor plan") },
+      ],
       description: tr(
         "Loja de esquina com grandes montras e dupla exposição, no bairro criativo de Santa Catarina, entre Santos, o Cais do Sodré e o Bairro Alto. Uma zona onde cafés de especialidade, brunch, mercearias gourmet, galerias e lojas de design convivem lado a lado, com o Miradouro de Santa Catarina por perto. Hoje funciona como salão de manicure e pedicure, com clientela, redes sociais e marcações online, e pode ser retomado tal como está. O local já foi utilizado como bar e presta-se a outros conceitos (estética, café, pastelaria, gelataria, bar, take-away, restaurante, ateliê ou concept store), sujeito a licenciamento e à autorização do senhorio e do condomínio.",
         "Local d'angle avec grandes baies vitrées et double exposition, dans le quartier créatif de Santa Catarina, entre Santos, Cais do Sodré et le Bairro Alto. Une zone où cafés de spécialité, brunchs, épiceries fines, galeries et boutiques de design se côtoient, avec le Miradouro de Santa Catarina à proximité. Il accueille aujourd'hui un salon de manucure et pédicure, avec clientèle, réseaux sociaux et réservation en ligne, et peut être repris tel quel. Le local a déjà été utilisé comme bar et se prête à d'autres concepts (esthétique, café, pâtisserie, glacier, bar, vente à emporter, restaurant, atelier ou concept store), sous réserve d'autorisation administrative et de l'accord du propriétaire et de la copropriété.",
@@ -74,9 +86,7 @@ export function getListings(lang: Lang): Listing[] {
       financials: [
         { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "1 200 €" },
       ],
-      mapQuery: "Santa Catarina, Lisboa",
-      mapLat: 38.711,
-      mapLng: -9.1485,
+      mapQuery: "Rua do Poço dos Negros 77, Lisboa",
       nearbyShops: tr("Cafés de especialidade, brunch, mercearias gourmet, galerias e lojas de design", "Cafés de spécialité, brunchs, épiceries fines, galeries et boutiques de design", "Specialty cafés, brunch spots, gourmet grocers, galleries and design shops"),
       environment: [
         tr("Bairro criativo", "Quartier créatif", "Creative district"),

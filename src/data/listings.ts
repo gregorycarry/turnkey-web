@@ -57,7 +57,7 @@ export function getListings(lang: Lang): Listing[] {
   return [
     {
       code: "TK-2026-007",
-      type: tr("Restaurante libanês (esquina com esplanada)", "Restaurant libanais (angle avec terrasse)", "Lebanese restaurant (corner with terrace)"),
+      type: tr("Restaurante libanês de esquina com esplanada · 169 m² · LX Factory a 250 m", "Restaurant libanais d'angle avec terrasse · 169 m² · à 250 m de LX Factory", "Corner Lebanese restaurant with terrace · 169 sqm · 250 m from LX Factory"),
       zone: tr("Alcântara · Rua Luís de Camões, Lisboa", "Alcântara · Rua Luís de Camões, Lisbonne", "Alcântara · Rua Luís de Camões, Lisbon"),
       kind: "trespasse" as const,
       category: "fb" as const,
@@ -74,9 +74,9 @@ export function getListings(lang: Lang): Listing[] {
         { src: "/listings/tk-2026-007/street.jpg", alt: tr("Rua Luís de Camões, Alcântara", "Rua Luís de Camões, Alcântara", "Rua Luís de Camões, Alcântara") },
       ],
       description: tr(
-        "Restaurante de esquina com esplanada em Alcântara, a cerca de 250 m da LX Factory, um dos polos turísticos e criativos mais visitados de Lisboa, rodeado de hotéis, escritórios, coworking e residentes. São 169 m² brutos (163 m² úteis) em open space, ao nível da rua, com cozinha refeita e equipada, climatização e extração de fumos. A sala foi recentemente remodelada, com mobiliário e equipamento novos. O restaurante tem uma classificação de 4,8/5 no Google, com mais de 300 avaliações, e a licença Jogos Santa Casa. Contrato de arrendamento até março de 2031, com renda de 1 200 €/mês, sujeita a atualização anual legal.",
-        "Restaurant d'angle avec terrasse à Alcântara, à environ 250 m de LX Factory, l'un des pôles touristiques et créatifs les plus visités de Lisbonne, entouré d'hôtels, de bureaux, de coworking et d'habitants. Soit 169 m² bruts (163 m² utiles) en open space, de plain-pied, avec cuisine refaite et équipée, climatisation et extraction de fumées. La salle a été récemment rénovée, avec mobilier et équipement neufs. Le restaurant affiche une note de 4,8/5 sur Google pour plus de 300 avis, et la licence Jogos Santa Casa. Bail jusqu'en mars 2031, loyer de 1 200 €/mois, soumis à l'actualisation annuelle légale.",
-        "Corner restaurant with a terrace in Alcântara, about 250 m from LX Factory, one of Lisbon's most visited tourist and creative destinations, surrounded by hotels, offices, coworking spaces and residents. 169 sqm gross (163 sqm usable), open-plan, at street level, with a refitted, equipped kitchen, air conditioning and extraction. The dining room was recently renovated, with new furniture and equipment. The restaurant holds a 4.8/5 rating on Google across 300+ reviews, and the Jogos Santa Casa licence. Lease runs until March 2031, rent €1,200/month, subject to the legal annual update."
+        "Esquina. Esplanada. 169 m² ao nível da rua, a 250 m da LX Factory. Um restaurante libanês com 4,8/5 no Google e mais de 300 avaliações, pronto para quem quiser assumir as chaves e abrir. Cozinha refeita e equipada, climatização, extração de fumos, sala remodelada com mobiliário e equipamento novos. Licença Jogos Santa Casa já instalada: uma receita complementar sem investimento. Alcântara reúne hotéis, escritórios, coworking e o fluxo turístico e criativo da LX Factory, e este é um dos poucos espaços de esquina com esplanada à escala de 169 m². Arrendamento até março de 2031, renda de 1 200 €/mês (atualização anual legal).",
+        "Angle. Terrasse. 169 m² de plain-pied, à 250 m de LX Factory. Un restaurant libanais noté 4,8/5 sur Google pour plus de 300 avis, prêt pour celui qui veut prendre les clés et ouvrir. Cuisine refaite et équipée, climatisation, extraction de fumées, salle rénovée avec mobilier et équipement neufs. Licence Jogos Santa Casa déjà en place : un revenu complémentaire sans investissement. Alcântara concentre hôtels, bureaux, coworking et le flux touristique et créatif de LX Factory, et les emplacements d'angle avec terrasse sur 169 m² y sont rares. Bail jusqu'en mars 2031, loyer de 1 200 €/mois (actualisation annuelle légale).",
+        "Corner. Terrace. 169 sqm at street level, 250 m from LX Factory. A Lebanese restaurant rated 4.8/5 on Google across 300+ reviews, ready for whoever wants to take the keys and open. Refitted, equipped kitchen, air conditioning, extraction, renovated dining room with new furniture and equipment. Jogos Santa Casa licence already in place: an extra revenue line with no investment. Alcântara brings together hotels, offices, coworking and the tourist and creative flow of LX Factory, and corner units with a terrace at 169 sqm are rare there. Lease until March 2031, rent €1,200/month (legal annual update)."
       ),
       metrics: [
         { label: tr("Área", "Surface", "Area"), value: tr("169 m² brutos (163 m² úteis)", "169 m² bruts (163 m² utiles)", "169 sqm gross (163 sqm usable)") },
@@ -96,13 +96,14 @@ export function getListings(lang: Lang): Listing[] {
         tr("Hotéis e escritórios nas proximidades", "Hôtels et bureaux à proximité", "Hotels and offices nearby"),
       ],
       strengths: [
-        tr("Esquina com esplanada e grande visibilidade", "Angle avec terrasse et forte visibilité", "Corner unit with terrace and high visibility"),
-        tr("Cozinha refeita e sala remodelada, com mobiliário e equipamento novos", "Cuisine refaite et salle rénovée, mobilier et équipement neufs", "Refitted kitchen and renovated dining room, new furniture and equipment"),
-        tr("Climatização e extração de fumos", "Climatisation et extraction de fumées", "Air conditioning and extraction"),
-        tr("4,8/5 no Google, com mais de 300 avaliações", "4,8/5 sur Google, plus de 300 avis", "4.8/5 on Google, 300+ reviews"),
-        tr("Licença Jogos Santa Casa", "Licence Jogos Santa Casa", "Jogos Santa Casa licence"),
+        tr("Esquina com esplanada: máxima visibilidade, duas frentes para a rua", "Angle avec terrasse : visibilité maximale, deux façades sur la rue", "Corner with terrace: maximum visibility, two street frontages"),
+        tr("4,8/5 no Google, mais de 300 avaliações: clientela e reputação já construídas", "4,8/5 sur Google, plus de 300 avis : clientèle et réputation déjà construites", "4.8/5 on Google, 300+ reviews: customers and reputation already built"),
+        tr("Cozinha refeita e sala remodelada, mobiliário e equipamento novos: nada a investir para abrir", "Cuisine refaite et salle rénovée, mobilier et équipement neufs : rien à investir pour ouvrir", "Refitted kitchen and renovated room, new furniture and equipment: nothing to invest to open"),
+        tr("Climatização e extração de fumos já instaladas", "Climatisation et extraction de fumées déjà installées", "Air conditioning and extraction already installed"),
+        tr("Licença Jogos Santa Casa: receita complementar", "Licence Jogos Santa Casa : revenu complémentaire", "Jogos Santa Casa licence: extra revenue line"),
+        tr("A 250 m da LX Factory, entre hotéis, escritórios e coworking", "À 250 m de LX Factory, entre hôtels, bureaux et coworking", "250 m from LX Factory, among hotels, offices and coworking"),
+        tr("169 m² em open space, ao nível da rua: espaço para sala cheia e esplanada", "169 m² en open space de plain-pied : de la place pour une salle pleine et une terrasse", "169 sqm open-plan at street level: room for a full dining room and terrace"),
         tr("Arrendamento até março de 2031, renda de 1 200 €/mês", "Bail jusqu'en mars 2031, loyer de 1 200 €/mois", "Lease until March 2031, rent €1,200/month"),
-        tr("A 250 m da LX Factory, entre hotéis e escritórios", "À 250 m de LX Factory, entre hôtels et bureaux", "250 m from LX Factory, among hotels and offices"),
       ],
       reason: tr("Cessão pelos sócios", "Cession par les associés", "Sale by the partners"),
     },

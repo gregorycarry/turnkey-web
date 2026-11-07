@@ -56,6 +56,43 @@ export function getListings(lang: Lang): Listing[] {
 
   return [
     {
+      code: "TK-2026-006",
+      type: tr("Salão de manicure e pedicure (loja de esquina)", "Salon de manucure et pédicure (local d'angle)", "Nail & pedicure salon (corner unit)"),
+      zone: tr("Santa Catarina / Misericórdia · Lisboa", "Santa Catarina / Misericórdia · Lisbonne", "Santa Catarina / Misericórdia · Lisbon"),
+      kind: "trespasse" as const,
+      category: "commerce" as const,
+      price: "70 000 €",
+      description: tr(
+        "Loja de esquina com grandes montras e dupla exposição, no bairro criativo de Santa Catarina, entre Santos, o Cais do Sodré e o Bairro Alto. Uma zona onde cafés de especialidade, brunch, mercearias gourmet, galerias e lojas de design convivem lado a lado, com o Miradouro de Santa Catarina por perto. Hoje funciona como salão de manicure e pedicure, com clientela, redes sociais e marcações online, e pode ser retomado tal como está. O local já foi utilizado como bar e presta-se a outros conceitos (estética, café, pastelaria, gelataria, bar, take-away, restaurante, ateliê ou concept store), sujeito a licenciamento e à autorização do senhorio e do condomínio.",
+        "Local d'angle avec grandes baies vitrées et double exposition, dans le quartier créatif de Santa Catarina, entre Santos, Cais do Sodré et le Bairro Alto. Une zone où cafés de spécialité, brunchs, épiceries fines, galeries et boutiques de design se côtoient, avec le Miradouro de Santa Catarina à proximité. Il accueille aujourd'hui un salon de manucure et pédicure, avec clientèle, réseaux sociaux et réservation en ligne, et peut être repris tel quel. Le local a déjà été utilisé comme bar et se prête à d'autres concepts (esthétique, café, pâtisserie, glacier, bar, vente à emporter, restaurant, atelier ou concept store), sous réserve d'autorisation administrative et de l'accord du propriétaire et de la copropriété.",
+        "Corner unit with large windows and dual exposure, in the creative Santa Catarina district, between Santos, Cais do Sodré and Bairro Alto. An area where specialty cafés, brunch spots, gourmet grocers, galleries and design shops sit side by side, with the Santa Catarina viewpoint nearby. Today a nail and pedicure salon with a client base, social media and online booking, it can be taken over as it is. The space has been used as a bar before and suits other concepts (beauty, café, pastry shop, gelateria, bar, take-away, restaurant, studio or concept store), subject to licensing and landlord and condominium approval."
+      ),
+      metrics: [
+        { label: tr("Área", "Surface", "Area"), value: tr("57 m² brutos (~35 m² úteis)", "57 m² bruts (~35 m² utiles)", "57 sqm gross (~35 sqm usable)") },
+        { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: "B-" },
+      ],
+      financials: [
+        { label: tr("Renda mensal", "Loyer mensuel", "Monthly rent"), value: "1 200 €" },
+      ],
+      mapQuery: "Santa Catarina, Lisboa",
+      mapLat: 38.711,
+      mapLng: -9.1485,
+      nearbyShops: tr("Cafés de especialidade, brunch, mercearias gourmet, galerias e lojas de design", "Cafés de spécialité, brunchs, épiceries fines, galeries et boutiques de design", "Specialty cafés, brunch spots, gourmet grocers, galleries and design shops"),
+      environment: [
+        tr("Bairro criativo", "Quartier créatif", "Creative district"),
+        tr("Perto do Miradouro de Santa Catarina", "Proche du Miradouro de Santa Catarina", "Near the Santa Catarina viewpoint"),
+      ],
+      strengths: [
+        tr("Esquina com dupla exposição e grandes montras, muita luz natural", "Angle avec double exposition et grandes baies vitrées, beaucoup de lumière", "Corner with dual exposure and large windows, plenty of natural light"),
+        tr("Rés-do-chão com entrada direta pela rua e WC próprio", "Rez-de-chaussée avec entrée directe sur la rue et WC privatif", "Ground floor with direct street entrance and private WC"),
+        tr("Atividade de beleza em funcionamento, com marcações online", "Activité beauté en fonctionnement, avec réservation en ligne", "Running beauty business with online booking"),
+        tr("Espaço aberto a outros conceitos: café, gelataria, bar ou restaurante (sujeito a licenciamento)", "Local ouvert à d'autres concepts : café, glacier, bar ou restaurant (sous réserve d'autorisation)", "Space open to other concepts: café, gelateria, bar or restaurant (subject to licensing)"),
+        tr("Já utilizado como bar", "Déjà utilisé comme bar", "Previously used as a bar"),
+        tr("Zona criativa e muito procurada de Lisboa", "Quartier créatif très recherché de Lisbonne", "Creative, sought-after Lisbon district"),
+      ],
+      reason: tr("Venda proprietário", "Vente propriétaire", "Owner sale"),
+    },
+    {
       code: "TK-2026-005",
       type: tr("Restaurante de tapas", "Restaurant de tapas", "Tapas restaurant"),
       zone: tr("Chaves · Norte de Portugal", "Chaves · nord du Portugal", "Chaves · Northern Portugal"),

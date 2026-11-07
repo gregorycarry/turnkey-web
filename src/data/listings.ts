@@ -62,6 +62,17 @@ export function getListings(lang: Lang): Listing[] {
       kind: "trespasse" as const,
       category: "fb" as const,
       price: "230 000 €",
+      ogImage: "https://turnkey.pt/listings/tk-2026-007/og.jpg",
+      images: [
+        { src: "/listings/tk-2026-007/facade.jpg", alt: tr("Fachada de esquina com esplanada", "Façade d'angle avec terrasse", "Corner façade with terrace") },
+        { src: "/listings/tk-2026-007/corner.jpg", alt: tr("Esplanada na esquina, Rua Luís de Camões", "Terrasse d'angle, Rua Luís de Camões", "Corner terrace, Rua Luís de Camões") },
+        { src: "/listings/tk-2026-007/cover.jpg", alt: tr("Sala com banco corrido e azulejos", "Salle avec banquette et carreaux de ciment", "Dining room with banquette and patterned tiles") },
+        { src: "/listings/tk-2026-007/room.jpg", alt: tr("Sala em open space com luz natural", "Salle en open space avec lumière naturelle", "Open-plan dining room with natural light") },
+        { src: "/listings/tk-2026-007/kitchen.jpg", alt: tr("Cozinha equipada com extração de fumos", "Cuisine équipée avec extraction de fumées", "Equipped kitchen with extraction hood") },
+        { src: "/listings/tk-2026-007/kitchen2.jpg", alt: tr("Cozinha: forno, bancada refrigerada e passe", "Cuisine : four, plan réfrigéré et passe", "Kitchen: oven, refrigerated counter and pass") },
+        { src: "/listings/tk-2026-007/ceiling.jpg", alt: tr("Teto com climatização e iluminação", "Plafond avec climatisation et éclairage", "Ceiling with air conditioning and lighting") },
+        { src: "/listings/tk-2026-007/street.jpg", alt: tr("Rua Luís de Camões, Alcântara", "Rua Luís de Camões, Alcântara", "Rua Luís de Camões, Alcântara") },
+      ],
       description: tr(
         "Restaurante de esquina com esplanada em Alcântara, a cerca de 250 m da LX Factory, um dos polos turísticos e criativos mais visitados de Lisboa, rodeado de hotéis, escritórios, coworking e residentes. São 169 m² brutos (163 m² úteis) em open space, ao nível da rua, com cozinha refeita e equipada, climatização e extração de fumos. A sala foi recentemente remodelada, com mobiliário e equipamento novos. O restaurante tem uma classificação de 4,8/5 no Google, com mais de 300 avaliações, e a licença Jogos Santa Casa. Contrato de arrendamento até março de 2031, com renda de 1 200 €/mês, sujeita a atualização anual legal.",
         "Restaurant d'angle avec terrasse à Alcântara, à environ 250 m de LX Factory, l'un des pôles touristiques et créatifs les plus visités de Lisbonne, entouré d'hôtels, de bureaux, de coworking et d'habitants. Soit 169 m² bruts (163 m² utiles) en open space, de plain-pied, avec cuisine refaite et équipée, climatisation et extraction de fumées. La salle a été récemment rénovée, avec mobilier et équipement neufs. Le restaurant affiche une note de 4,8/5 sur Google pour plus de 300 avis, et la licence Jogos Santa Casa. Bail jusqu'en mars 2031, loyer de 1 200 €/mois, soumis à l'actualisation annuelle légale.",

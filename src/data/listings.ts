@@ -80,6 +80,7 @@ export function getListings(lang: Lang): Listing[] {
       ),
       metrics: [
         { label: tr("Área", "Surface", "Area"), value: tr("169 m² brutos (163 m² úteis)", "169 m² bruts (163 m² utiles)", "169 sqm gross (163 sqm usable)") },
+        { label: tr("Certificado energético", "Certificat énergétique", "Energy rating"), value: tr("Propriedade isenta", "Propriété exemptée", "Exempt property") },
         { label: tr("Volume de negócios", "Chiffre d'affaires", "Turnover"), value: tr("Sob consulta", "Sur demande", "On request") },
       ],
       financials: [
